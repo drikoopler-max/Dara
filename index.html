@@ -43,10 +43,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* ---------- TYPOGRAPHY ---------- */
-        h1,
-        h2,
-        h3 {
+        h1, h2, h3 {
             font-weight: 600;
             letter-spacing: -0.02em;
         }
@@ -77,7 +74,6 @@
             color: var(--gold);
         }
 
-        /* ---------- LAYOUT ---------- */
         .container {
             max-width: 1240px;
             margin: 0 auto;
@@ -122,7 +118,7 @@
 
         nav {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
             align-items: center;
         }
 
@@ -135,6 +131,38 @@
         }
 
         nav a:hover {
+            color: var(--accent);
+        }
+
+        /* ---------- LANGUAGE SWITCHER ---------- */
+        .lang-switcher {
+            display: flex;
+            gap: 2px;
+            background: var(--border);
+            border-radius: 8px;
+            padding: 2px;
+        }
+
+        .lang-btn {
+            padding: 6px 14px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            border-radius: 6px;
+            transition: all var(--transition);
+            font-family: 'Inter', sans-serif;
+            color: var(--text-secondary);
+        }
+
+        .lang-btn.active {
+            background: var(--surface);
+            color: var(--accent);
+            box-shadow: var(--shadow);
+        }
+
+        .lang-btn:hover:not(.active) {
             color: var(--accent);
         }
 
@@ -748,16 +776,17 @@
                 padding: 2rem;
             }
 
-            nav {
-                gap: 1rem;
-            }
-
             .hero-visual {
                 padding: 2rem;
             }
 
             .portfolio-card {
                 min-width: 280px;
+            }
+
+            .header-inner {
+                flex-wrap: wrap;
+                gap: 0.75rem;
             }
         }
 
@@ -766,9 +795,10 @@
                 grid-template-columns: 1fr;
             }
 
-            .header-inner {
-                flex-direction: column;
+            nav {
+                flex-wrap: wrap;
                 gap: 0.75rem;
+                justify-content: center;
             }
 
             .contact-wrapper {
@@ -784,10 +814,14 @@
         <div class="container header-inner">
             <a href="#" class="logo">VL Freelance</a>
             <nav>
-                <a href="#services">Services</a>
-                <a href="#portfolio">Work</a>
-                <a href="#pricing">Pricing</a>
-                <a href="#contact" class="btn btn-primary">Get in touch</a>
+                <a href="#services" data-lang-key="navServices">Services</a>
+                <a href="#portfolio" data-lang-key="navWork">Work</a>
+                <a href="#pricing" data-lang-key="navPricing">Pricing</a>
+                <a href="#contact" class="btn btn-primary" data-lang-key="navContact">Get in touch</a>
+                <div class="lang-switcher">
+                    <button class="lang-btn active" data-lang="en" aria-label="Switch to English">EN</button>
+                    <button class="lang-btn" data-lang="ua" aria-label="Перемкнути на українську">UA</button>
+                </div>
             </nav>
         </div>
     </header>
@@ -796,32 +830,32 @@
     <section class="hero">
         <div class="container hero-inner">
             <div class="hero-content">
-                <div class="hero-tag">✦ Available for projects</div>
-                <h1 class="hero-title">I turn your ideas into <span class="accent-text">code, pixels & stickers</span></h1>
-                <p class="hero-text">
+                <div class="hero-tag" data-lang-key="heroTag">✦ Available for projects</div>
+                <h1 class="hero-title" data-lang-key="heroTitle">I turn your ideas into <span class="accent-text">code, pixels & stickers</span></h1>
+                <p class="hero-text" data-lang-key="heroText">
                     Full-stack visual freelancer. Business card websites, AI-generated art, Telegram sticker packs, and custom invitations — all from one person who actually gets your vision.
                 </p>
                 <div class="hero-buttons">
-                    <a href="#portfolio" class="btn btn-primary">View my work</a>
-                    <a href="#pricing" class="btn btn-outline">See pricing</a>
+                    <a href="#portfolio" class="btn btn-primary" data-lang-key="heroBtn1">View my work</a>
+                    <a href="#pricing" class="btn btn-outline" data-lang-key="heroBtn2">See pricing</a>
                 </div>
             </div>
             <div class="hero-visual">
                 <div class="hero-visual-item">
                     <div class="hero-visual-icon">🌐</div>
-                    7 live websites on GitHub
+                    <span data-lang-key="heroItem1">7 live websites on GitHub</span>
                 </div>
                 <div class="hero-visual-item">
                     <div class="hero-visual-icon">🎨</div>
-                    3 Telegram sticker packs
+                    <span data-lang-key="heroItem2">3 Telegram sticker packs</span>
                 </div>
                 <div class="hero-visual-item">
                     <div class="hero-visual-icon">💌</div>
-                    5 custom invitation designs
+                    <span data-lang-key="heroItem3">5 custom invitation designs</span>
                 </div>
                 <div class="hero-visual-item">
                     <div class="hero-visual-icon">🤖</div>
-                    AI-generated anime art & wallpapers
+                    <span data-lang-key="heroItem4">AI-generated anime art & wallpapers</span>
                 </div>
             </div>
         </div>
@@ -831,30 +865,30 @@
     <section id="services">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">What I do</span>
-                <h2>Services</h2>
-                <p class="section-subtitle">One freelancer, a whole visual toolkit for your business.</p>
+                <span class="section-label" data-lang-key="servicesLabel">What I do</span>
+                <h2 data-lang-key="servicesTitle">Services</h2>
+                <p class="section-subtitle" data-lang-key="servicesSubtitle">One freelancer, a whole visual toolkit for your business.</p>
             </div>
             <div class="services-grid">
                 <div class="service-card">
                     <span class="service-icon">💻</span>
-                    <h3>Business Card Websites</h3>
-                    <p>Clean, responsive sites you receive as a file. Just add your domain & hosting — or let me handle it all.</p>
+                    <h3 data-lang-key="service1Title">Business Card Websites</h3>
+                    <p data-lang-key="service1Desc">Clean, responsive sites you receive as a file. Just add your domain & hosting — or let me handle it all.</p>
                 </div>
                 <div class="service-card">
                     <span class="service-icon">🎭</span>
-                    <h3>Telegram Stickers</h3>
-                    <p>Custom illustrated sticker packs for your brand, community, or just for fun. Delivered ready to upload.</p>
+                    <h3 data-lang-key="service2Title">Telegram Stickers</h3>
+                    <p data-lang-key="service2Desc">Custom illustrated sticker packs for your brand, community, or just for fun. Delivered ready to upload.</p>
                 </div>
                 <div class="service-card">
                     <span class="service-icon">💌</span>
-                    <h3>Invitations</h3>
-                    <p>Digital or print-ready invitations for weddings, birthdays, and events. Every design is unique.</p>
+                    <h3 data-lang-key="service3Title">Invitations</h3>
+                    <p data-lang-key="service3Desc">Digital or print-ready invitations for weddings, birthdays, and events. Every design is unique.</p>
                 </div>
                 <div class="service-card">
                     <span class="service-icon">🤖</span>
-                    <h3>AI Content</h3>
-                    <p>AI-generated wallpapers, avatars, and anime-style artwork. Perfect for branding, socials, or merch.</p>
+                    <h3 data-lang-key="service4Title">AI Content</h3>
+                    <p data-lang-key="service4Desc">AI-generated wallpapers, avatars, and anime-style artwork. Perfect for branding, socials, or merch.</p>
                 </div>
             </div>
         </div>
@@ -864,14 +898,12 @@
     <section id="portfolio">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">Portfolio</span>
-                <h2>Websites I've built</h2>
-                <p class="section-subtitle">7 business card websites, each with live preview and source code.</p>
+                <span class="section-label" data-lang-key="portfolioLabel">Portfolio</span>
+                <h2 data-lang-key="portfolioTitle">Websites I've built</h2>
+                <p class="section-subtitle" data-lang-key="portfolioSubtitle">7 business card websites, each with live preview and source code.</p>
             </div>
             <div class="portfolio-wrapper">
-                <div class="portfolio-slider" id="portfolioSlider">
-                    <!-- 7 карток, заповню через JS -->
-                </div>
+                <div class="portfolio-slider" id="portfolioSlider"></div>
             </div>
         </div>
     </section>
@@ -880,13 +912,11 @@
     <section>
         <div class="container">
             <div class="section-header">
-                <span class="section-label">Stickers</span>
-                <h2>Telegram Sticker Packs</h2>
-                <p class="section-subtitle">3 packs designed to make your chats stand out.</p>
+                <span class="section-label" data-lang-key="stickersLabel">Stickers</span>
+                <h2 data-lang-key="stickersTitle">Telegram Sticker Packs</h2>
+                <p class="section-subtitle" data-lang-key="stickersSubtitle">3 packs designed to make your chats stand out.</p>
             </div>
-            <div class="stickers-grid" id="stickersGrid">
-                <!-- 3 паки, заповню через JS -->
-            </div>
+            <div class="stickers-grid" id="stickersGrid"></div>
         </div>
     </section>
 
@@ -894,13 +924,11 @@
     <section>
         <div class="container">
             <div class="section-header">
-                <span class="section-label">Design</span>
-                <h2>Invitations</h2>
-                <p class="section-subtitle">5 custom designs for your most important moments.</p>
+                <span class="section-label" data-lang-key="invitationsLabel">Design</span>
+                <h2 data-lang-key="invitationsTitle">Invitations</h2>
+                <p class="section-subtitle" data-lang-key="invitationsSubtitle">5 custom designs for your most important moments.</p>
             </div>
-            <div class="gallery-grid" id="invitationsGrid">
-                <!-- 5 запрошень, заповню через JS -->
-            </div>
+            <div class="gallery-grid" id="invitationsGrid"></div>
         </div>
     </section>
 
@@ -908,19 +936,17 @@
     <section>
         <div class="container">
             <div class="section-header">
-                <span class="section-label">AI Art</span>
-                <h2>Generated Content</h2>
-                <p class="section-subtitle">Anime-style wallpapers, avatars, and illustrations — all created with AI.</p>
+                <span class="section-label" data-lang-key="aiLabel">AI Art</span>
+                <h2 data-lang-key="aiTitle">Generated Content</h2>
+                <p class="section-subtitle" data-lang-key="aiSubtitle">Anime-style wallpapers, avatars, and illustrations — all created with AI.</p>
             </div>
             <div class="filter-tags" id="filterTags">
-                <button class="filter-tag active" data-filter="all">All</button>
-                <button class="filter-tag" data-filter="wallpaper">Wallpapers</button>
-                <button class="filter-tag" data-filter="avatar">Avatars</button>
-                <button class="filter-tag" data-filter="illustration">Illustrations</button>
+                <button class="filter-tag active" data-filter="all" data-lang-key="filterAll">All</button>
+                <button class="filter-tag" data-filter="wallpaper" data-lang-key="filterWallpapers">Wallpapers</button>
+                <button class="filter-tag" data-filter="avatar" data-lang-key="filterAvatars">Avatars</button>
+                <button class="filter-tag" data-filter="illustration" data-lang-key="filterIllustrations">Illustrations</button>
             </div>
-            <div class="ai-grid" id="aiGrid">
-                <!-- AI-арти, заповню через JS -->
-            </div>
+            <div class="ai-grid" id="aiGrid"></div>
         </div>
     </section>
 
@@ -930,10 +956,10 @@
             <div class="cookbook-section">
                 <div class="cookbook-visual">📖</div>
                 <div class="cookbook-content">
-                    <span class="section-label">Free download</span>
-                    <h3>My English Cookbook</h3>
-                    <p>A collection of original recipes I wrote in English. Grab it for free — it's my way of saying thanks for stopping by.</p>
-                    <button class="btn btn-primary" id="cookbookBtn">Get the cookbook</button>
+                    <span class="section-label" data-lang-key="cookbookLabel">Free download</span>
+                    <h3 data-lang-key="cookbookTitle">My English Cookbook</h3>
+                    <p data-lang-key="cookbookDesc">A collection of original recipes I wrote in English. Grab it for free — it's my way of saying thanks for stopping by.</p>
+                    <button class="btn btn-primary" id="cookbookBtn" data-lang-key="cookbookBtn">Get the cookbook</button>
                 </div>
             </div>
         </div>
@@ -943,47 +969,47 @@
     <section id="pricing">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">Pricing</span>
-                <h2>Clear rates, no surprises</h2>
-                <p class="section-subtitle">Everything is priced in USD. Payment via Etsy or direct invoice.</p>
+                <span class="section-label" data-lang-key="pricingLabel">Pricing</span>
+                <h2 data-lang-key="pricingTitle">Clear rates, no surprises</h2>
+                <p class="section-subtitle" data-lang-key="pricingSubtitle">Everything is priced in USD. Payment via Etsy or direct invoice.</p>
             </div>
             <div class="pricing-grid">
                 <div class="pricing-card">
-                    <h3>Website — File Only</h3>
+                    <h3 data-lang-key="pricing1Title">Website — File Only</h3>
                     <p class="pricing-price">$50</p>
                     <ul>
-                        <li>Fully coded business card site</li>
-                        <li>Responsive design</li>
-                        <li>Delivered as ZIP file</li>
-                        <li>You set up domain & hosting</li>
-                        <li>1 revision included</li>
+                        <li data-lang-key="pricing1Item1">Fully coded business card site</li>
+                        <li data-lang-key="pricing1Item2">Responsive design</li>
+                        <li data-lang-key="pricing1Item3">Delivered as ZIP file</li>
+                        <li data-lang-key="pricing1Item4">You set up domain & hosting</li>
+                        <li data-lang-key="pricing1Item5">1 revision included</li>
                     </ul>
-                    <a href="#contact" class="btn btn-outline">Order now</a>
+                    <a href="#contact" class="btn btn-outline" data-lang-key="orderNow">Order now</a>
                 </div>
                 <div class="pricing-card featured">
-                    <span class="pricing-badge">Most popular</span>
-                    <h3>Website — Turnkey</h3>
+                    <span class="pricing-badge" data-lang-key="pricingBadge">Most popular</span>
+                    <h3 data-lang-key="pricing2Title">Website — Turnkey</h3>
                     <p class="pricing-price">$100</p>
                     <ul>
-                        <li>Everything from "File Only"</li>
-                        <li>Domain & hosting setup</li>
-                        <li>Full handover of all credentials</li>
-                        <li>SSL certificate configured</li>
-                        <li>2 revisions included</li>
+                        <li data-lang-key="pricing2Item1">Everything from "File Only"</li>
+                        <li data-lang-key="pricing2Item2">Domain & hosting setup</li>
+                        <li data-lang-key="pricing2Item3">Full handover of all credentials</li>
+                        <li data-lang-key="pricing2Item4">SSL certificate configured</li>
+                        <li data-lang-key="pricing2Item5">2 revisions included</li>
                     </ul>
-                    <a href="#contact" class="btn btn-primary">Order now</a>
+                    <a href="#contact" class="btn btn-primary" data-lang-key="orderNow">Order now</a>
                 </div>
                 <div class="pricing-card">
-                    <h3>Sticker Pack</h3>
+                    <h3 data-lang-key="pricing3Title">Sticker Pack</h3>
                     <p class="pricing-price">$15</p>
                     <ul>
-                        <li>Custom illustrated stickers</li>
-                        <li>Telegram-ready format</li>
-                        <li>Full pack delivered</li>
-                        <li>1 revision included</li>
-                        <li>Commercial use OK</li>
+                        <li data-lang-key="pricing3Item1">Custom illustrated stickers</li>
+                        <li data-lang-key="pricing3Item2">Telegram-ready format</li>
+                        <li data-lang-key="pricing3Item3">Full pack delivered</li>
+                        <li data-lang-key="pricing3Item4">1 revision included</li>
+                        <li data-lang-key="pricing3Item5">Commercial use OK</li>
                     </ul>
-                    <a href="#contact" class="btn btn-outline">Order now</a>
+                    <a href="#contact" class="btn btn-outline" data-lang-key="orderNow">Order now</a>
                 </div>
             </div>
         </div>
@@ -993,37 +1019,37 @@
     <section id="contact">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">Contact</span>
-                <h2>Let's work together</h2>
-                <p class="section-subtitle">Fill out the form and I'll reach out via Telegram.</p>
+                <span class="section-label" data-lang-key="contactLabel">Contact</span>
+                <h2 data-lang-key="contactTitle">Let's work together</h2>
+                <p class="section-subtitle" data-lang-key="contactSubtitle">Fill out the form and I'll reach out via Telegram.</p>
             </div>
             <div class="contact-wrapper">
                 <form id="contactForm">
                     <div class="form-group">
-                        <label for="name">Your Name</label>
-                        <input type="text" id="name" name="name" placeholder="John Doe" required>
+                        <label for="name" data-lang-key="formName">Your Name</label>
+                        <input type="text" id="name" name="name" data-lang-key-placeholder="formNamePlaceholder" placeholder="John Doe" required>
                     </div>
                     <div class="form-group">
-                        <label for="telegram">Telegram @username</label>
-                        <input type="text" id="telegram" name="telegram" placeholder="@yourusername" required>
+                        <label for="telegram" data-lang-key="formTelegram">Telegram @username</label>
+                        <input type="text" id="telegram" name="telegram" data-lang-key-placeholder="formTelegramPlaceholder" placeholder="@yourusername" required>
                     </div>
                     <div class="form-group">
-                        <label for="service">Service Interested In</label>
+                        <label for="service" data-lang-key="formService">Service Interested In</label>
                         <select id="service" name="service">
-                            <option value="">— Select —</option>
-                            <option value="Website File Only ($50)">Website — File Only ($50)</option>
-                            <option value="Website Turnkey ($100)">Website — Turnkey ($100)</option>
-                            <option value="Sticker Pack ($15)">Sticker Pack ($15)</option>
-                            <option value="Invitation Design">Invitation Design</option>
-                            <option value="AI Content">AI Content</option>
-                            <option value="Other">Other</option>
+                            <option value="" data-lang-key="formServiceDefault">— Select —</option>
+                            <option value="Website File Only ($50)" data-lang-key="formServiceOpt1">Website — File Only ($50)</option>
+                            <option value="Website Turnkey ($100)" data-lang-key="formServiceOpt2">Website — Turnkey ($100)</option>
+                            <option value="Sticker Pack ($15)" data-lang-key="formServiceOpt3">Sticker Pack ($15)</option>
+                            <option value="Invitation Design" data-lang-key="formServiceOpt4">Invitation Design</option>
+                            <option value="AI Content" data-lang-key="formServiceOpt5">AI Content</option>
+                            <option value="Other" data-lang-key="formServiceOpt6">Other</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="message">Project Details</label>
-                        <textarea id="message" name="message" placeholder="Tell me about your project..." required></textarea>
+                        <label for="message" data-lang-key="formMessage">Project Details</label>
+                        <textarea id="message" name="message" data-lang-key-placeholder="formMessagePlaceholder" placeholder="Tell me about your project..." required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary" style="width:100%;">Send via Telegram</button>
+                    <button type="submit" class="btn btn-primary" style="width:100%;" data-lang-key="formSubmit">Send via Telegram</button>
                 </form>
             </div>
         </div>
@@ -1033,12 +1059,12 @@
     <footer>
         <div class="container">
             <div class="footer-links">
-                <a href="#services">Services</a>
-                <a href="#portfolio">Portfolio</a>
-                <a href="#pricing">Pricing</a>
-                <a href="#contact">Contact</a>
+                <a href="#services" data-lang-key="navServices">Services</a>
+                <a href="#portfolio" data-lang-key="navWork">Work</a>
+                <a href="#pricing" data-lang-key="navPricing">Pricing</a>
+                <a href="#contact" data-lang-key="navContact">Contact</a>
             </div>
-            <p class="copyright">© <span id="currentYear"></span> VL Freelance. All rights reserved.</p>
+            <p class="copyright">© <span id="currentYear"></span> VL Freelance. <span data-lang-key="rights">All rights reserved.</span></p>
         </div>
     </footer>
 
@@ -1046,91 +1072,357 @@
     <div class="toast" id="toast"></div>
 
     <script>
+        // ========== TRANSLATIONS ==========
+        const translations = {
+            en: {
+                navServices: 'Services',
+                navWork: 'Work',
+                navPricing: 'Pricing',
+                navContact: 'Get in touch',
+                heroTag: '✦ Available for projects',
+                heroTitle: 'I turn your ideas into <span class="accent-text">code, pixels & stickers</span>',
+                heroText: 'Full-stack visual freelancer. Business card websites, AI-generated art, Telegram sticker packs, and custom invitations — all from one person who actually gets your vision.',
+                heroBtn1: 'View my work',
+                heroBtn2: 'See pricing',
+                heroItem1: '7 live websites on GitHub',
+                heroItem2: '3 Telegram sticker packs',
+                heroItem3: '5 custom invitation designs',
+                heroItem4: 'AI-generated anime art & wallpapers',
+                servicesLabel: 'What I do',
+                servicesTitle: 'Services',
+                servicesSubtitle: 'One freelancer, a whole visual toolkit for your business.',
+                service1Title: 'Business Card Websites',
+                service1Desc: 'Clean, responsive sites you receive as a file. Just add your domain & hosting — or let me handle it all.',
+                service2Title: 'Telegram Stickers',
+                service2Desc: 'Custom illustrated sticker packs for your brand, community, or just for fun. Delivered ready to upload.',
+                service3Title: 'Invitations',
+                service3Desc: 'Digital or print-ready invitations for weddings, birthdays, and events. Every design is unique.',
+                service4Title: 'AI Content',
+                service4Desc: 'AI-generated wallpapers, avatars, and anime-style artwork. Perfect for branding, socials, or merch.',
+                portfolioLabel: 'Portfolio',
+                portfolioTitle: "Websites I've built",
+                portfolioSubtitle: '7 business card websites, each with live preview and source code.',
+                stickersLabel: 'Stickers',
+                stickersTitle: 'Telegram Sticker Packs',
+                stickersSubtitle: '3 packs designed to make your chats stand out.',
+                invitationsLabel: 'Design',
+                invitationsTitle: 'Invitations',
+                invitationsSubtitle: '5 custom designs for your most important moments.',
+                aiLabel: 'AI Art',
+                aiTitle: 'Generated Content',
+                aiSubtitle: 'Anime-style wallpapers, avatars, and illustrations — all created with AI.',
+                filterAll: 'All',
+                filterWallpapers: 'Wallpapers',
+                filterAvatars: 'Avatars',
+                filterIllustrations: 'Illustrations',
+                cookbookLabel: 'Free download',
+                cookbookTitle: 'My English Cookbook',
+                cookbookDesc: "A collection of original recipes I wrote in English. Grab it for free — it's my way of saying thanks for stopping by.",
+                cookbookBtn: 'Get the cookbook',
+                pricingLabel: 'Pricing',
+                pricingTitle: 'Clear rates, no surprises',
+                pricingSubtitle: 'Everything is priced in USD. Payment via Etsy or direct invoice.',
+                pricing1Title: 'Website — File Only',
+                pricing1Item1: 'Fully coded business card site',
+                pricing1Item2: 'Responsive design',
+                pricing1Item3: 'Delivered as ZIP file',
+                pricing1Item4: 'You set up domain & hosting',
+                pricing1Item5: '1 revision included',
+                pricingBadge: 'Most popular',
+                pricing2Title: 'Website — Turnkey',
+                pricing2Item1: 'Everything from "File Only"',
+                pricing2Item2: 'Domain & hosting setup',
+                pricing2Item3: 'Full handover of all credentials',
+                pricing2Item4: 'SSL certificate configured',
+                pricing2Item5: '2 revisions included',
+                pricing3Title: 'Sticker Pack',
+                pricing3Item1: 'Custom illustrated stickers',
+                pricing3Item2: 'Telegram-ready format',
+                pricing3Item3: 'Full pack delivered',
+                pricing3Item4: '1 revision included',
+                pricing3Item5: 'Commercial use OK',
+                orderNow: 'Order now',
+                contactLabel: 'Contact',
+                contactTitle: "Let's work together",
+                contactSubtitle: "Fill out the form and I'll reach out via Telegram.",
+                formName: 'Your Name',
+                formNamePlaceholder: 'John Doe',
+                formTelegram: 'Telegram @username',
+                formTelegramPlaceholder: '@yourusername',
+                formService: 'Service Interested In',
+                formServiceDefault: '— Select —',
+                formServiceOpt1: 'Website — File Only ($50)',
+                formServiceOpt2: 'Website — Turnkey ($100)',
+                formServiceOpt3: 'Sticker Pack ($15)',
+                formServiceOpt4: 'Invitation Design',
+                formServiceOpt5: 'AI Content',
+                formServiceOpt6: 'Other',
+                formMessage: 'Project Details',
+                formMessagePlaceholder: 'Tell me about your project...',
+                formSubmit: 'Send via Telegram',
+                rights: 'All rights reserved.',
+                toastSuccess: '✅ Request sent! I will contact you on Telegram soon.',
+                toastError: '❌ Please fill all required fields.',
+                toastCookbook: '📖 Cookbook link sent to your Telegram! (simulation)',
+                portfolioTags: 'HTML · CSS · JS',
+                stickerCount: 'stickers',
+                portfolioAlert: 'Live preview of'
+            },
+            ua: {
+                navServices: 'Послуги',
+                navWork: 'Роботи',
+                navPricing: 'Ціни',
+                navContact: "Зв'язатися",
+                heroTag: '✦ Вільна для проєктів',
+                heroTitle: 'Я перетворюю ваші ідеї на <span class="accent-text">код, пікселі та стікери</span>',
+                heroText: "Full-stack візуальний фрілансер. Сайти-візитки, згенерований ШІ арт, стікерпаки для Telegram та індивідуальні запрошення — все від однієї людини, яка справді розуміє ваше бачення.",
+                heroBtn1: 'Переглянути роботи',
+                heroBtn2: 'Переглянути ціни',
+                heroItem1: '7 робочих сайтів на GitHub',
+                heroItem2: '3 стікерпаки для Telegram',
+                heroItem3: '5 індивідуальних дизайнів запрошень',
+                heroItem4: 'AI-генерований аніме-арт і шпалери',
+                servicesLabel: 'Що я роблю',
+                servicesTitle: 'Послуги',
+                servicesSubtitle: 'Один фрілансер — повний візуальний інструментарій для вашого бізнесу.',
+                service1Title: 'Сайти-візитки',
+                service1Desc: 'Чисті, адаптивні сайти, які ви отримуєте файлом. Просто додайте домен і хостинг — або дозвольте мені зробити це.',
+                service2Title: 'Стікери Telegram',
+                service2Desc: 'Індивідуальні ілюстровані стікерпаки для вашого бренду, спільноти або просто для розваги. Готові до завантаження.',
+                service3Title: 'Запрошення',
+                service3Desc: 'Цифрові або готові до друку запрошення на весілля, дні народження та події. Кожен дизайн унікальний.',
+                service4Title: 'AI Контент',
+                service4Desc: 'AI-генеровані шпалери, аватари та арт в аніме-стилі. Ідеально для брендингу, соцмереж або мерчу.',
+                portfolioLabel: 'Портфоліо',
+                portfolioTitle: 'Сайти, які я створила',
+                portfolioSubtitle: '7 сайтів-візиток, кожен з живим превʼю та вихідним кодом.',
+                stickersLabel: 'Стікери',
+                stickersTitle: 'Стікерпаки Telegram',
+                stickersSubtitle: '3 паки, створені, щоб ваші чати виділялися.',
+                invitationsLabel: 'Дизайн',
+                invitationsTitle: 'Запрошення',
+                invitationsSubtitle: '5 індивідуальних дизайнів для ваших найважливіших моментів.',
+                aiLabel: 'AI Арт',
+                aiTitle: 'Згенерований контент',
+                aiSubtitle: 'Шпалери, аватари та ілюстрації в аніме-стилі — всі створені за допомогою AI.',
+                filterAll: 'Всі',
+                filterWallpapers: 'Шпалери',
+                filterAvatars: 'Аватари',
+                filterIllustrations: 'Ілюстрації',
+                cookbookLabel: 'Безкоштовне завантаження',
+                cookbookTitle: 'Моя кулінарна книга англійською',
+                cookbookDesc: 'Колекція оригінальних рецептів, які я написала англійською. Завантажте безкоштовно — це мій спосіб подякувати за візит.',
+                cookbookBtn: 'Отримати книгу',
+                pricingLabel: 'Ціни',
+                pricingTitle: 'Прозорі ціни, без сюрпризів',
+                pricingSubtitle: 'Усі ціни в доларах США. Оплата через Etsy або прямий рахунок.',
+                pricing1Title: 'Сайт — Лише файл',
+                pricing1Item1: 'Повністю зверстаний сайт-візитка',
+                pricing1Item2: 'Адаптивний дизайн',
+                pricing1Item3: 'Доставка ZIP-файлом',
+                pricing1Item4: 'Ви налаштовуєте домен і хостинг',
+                pricing1Item5: '1 правка включена',
+                pricingBadge: 'Найпопулярніше',
+                pricing2Title: 'Сайт — Під ключ',
+                pricing2Item1: 'Все з тарифу "Лише файл"',
+                pricing2Item2: 'Налаштування домену та хостингу',
+                pricing2Item3: 'Повна передача всіх доступів',
+                pricing2Item4: 'SSL-сертифікат налаштовано',
+                pricing2Item5: '2 правки включено',
+                pricing3Title: 'Стікерпак',
+                pricing3Item1: 'Індивідуальні ілюстровані стікери',
+                pricing3Item2: 'Формат, готовий для Telegram',
+                pricing3Item3: 'Повний пак доставлено',
+                pricing3Item4: '1 правка включена',
+                pricing3Item5: 'Дозволено комерційне використання',
+                orderNow: 'Замовити',
+                contactLabel: 'Контакт',
+                contactTitle: 'Попрацюймо разом',
+                contactSubtitle: 'Заповніть форму, і я звʼяжуся з вами через Telegram.',
+                formName: "Ваше ім'я",
+                formNamePlaceholder: 'Іван Петренко',
+                formTelegram: 'Telegram @username',
+                formTelegramPlaceholder: '@вашюзернейм',
+                formService: 'Послуга, яка цікавить',
+                formServiceDefault: '— Оберіть —',
+                formServiceOpt1: 'Сайт — Лише файл ($50)',
+                formServiceOpt2: 'Сайт — Під ключ ($100)',
+                formServiceOpt3: 'Стікерпак ($15)',
+                formServiceOpt4: 'Дизайн запрошення',
+                formServiceOpt5: 'AI Контент',
+                formServiceOpt6: 'Інше',
+                formMessage: 'Деталі проєкту',
+                formMessagePlaceholder: 'Розкажіть про ваш проєкт...',
+                formSubmit: 'Надіслати через Telegram',
+                rights: 'Усі права захищено.',
+                toastSuccess: '✅ Заявку надіслано! Я звʼяжуся з вами в Telegram.',
+                toastError: '❌ Будь ласка, заповніть усі обовʼязкові поля.',
+                toastCookbook: '📖 Посилання на книгу надіслано в Telegram! (симуляція)',
+                portfolioTags: 'HTML · CSS · JS',
+                stickerCount: 'стікерів',
+                portfolioAlert: 'Живе превʼю'
+            }
+        };
+
+        let currentLang = 'en';
+
+        function switchLanguage(lang) {
+            currentLang = lang;
+            const t = translations[lang];
+
+            // Update all elements with data-lang-key
+            document.querySelectorAll('[data-lang-key]').forEach(el => {
+                const key = el.dataset.langKey;
+                if (t[key]) {
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        el.placeholder = t[key];
+                    } else if (el.tagName === 'SELECT') {
+                        // Handled separately for options
+                    } else {
+                        // Keep span inside heroTitle
+                        if (key === 'heroTitle') {
+                            el.innerHTML = t[key];
+                        } else {
+                            el.textContent = t[key];
+                        }
+                    }
+                }
+            });
+
+            // Update placeholders (inputs with data-lang-key-placeholder)
+            document.querySelectorAll('[data-lang-key-placeholder]').forEach(el => {
+                const key = el.dataset.langKeyPlaceholder;
+                if (t[key]) {
+                    el.placeholder = t[key];
+                }
+            });
+
+            // Update select options
+            const serviceSelect = document.getElementById('service');
+            if (serviceSelect) {
+                serviceSelect.options[0].textContent = t.formServiceDefault;
+                serviceSelect.options[1].textContent = t.formServiceOpt1;
+                serviceSelect.options[2].textContent = t.formServiceOpt2;
+                serviceSelect.options[3].textContent = t.formServiceOpt3;
+                serviceSelect.options[4].textContent = t.formServiceOpt4;
+                serviceSelect.options[5].textContent = t.formServiceOpt5;
+                serviceSelect.options[6].textContent = t.formServiceOpt6;
+            }
+
+            // Update lang buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+
+            // Save preference
+            localStorage.setItem('preferredLang', lang);
+        }
+
+        // Language button listeners
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => switchLanguage(btn.dataset.lang));
+        });
+
+        // Load saved language
+        const savedLang = localStorage.getItem('preferredLang') || 'en';
+        switchLanguage(savedLang);
+
         // ========== DYNAMIC YEAR ==========
         document.getElementById('currentYear').textContent = new Date().getFullYear();
 
         // ========== PORTFOLIO DATA ==========
-        const portfolioData = [
-            { name: 'Dental Clinic', tags: 'HTML · CSS · JS', desc: 'Landing page for a dental practice.' },
-            { name: 'Coffee Shop', tags: 'HTML · CSS · JS', desc: 'Cozy one-pager for a local café.' },
-            { name: 'Yoga Studio', tags: 'HTML · CSS · JS', desc: 'Calm, minimal site for a yoga instructor.' },
-            { name: 'Barber Shop', tags: 'HTML · CSS · JS', desc: 'Bold, masculine design for barbers.' },
-            { name: 'Florist', tags: 'HTML · CSS · JS', desc: 'Delicate floral-themed business card site.' },
-            { name: 'Photographer', tags: 'HTML · CSS · JS', desc: 'Portfolio site for a wedding photographer.' },
-            { name: 'Bakery', tags: 'HTML · CSS · JS', desc: 'Sweet, warm design for a home bakery.' }
-        ];
+        function getPortfolioData() {
+            const t = translations[currentLang];
+            return [
+                { name: 'Dental Clinic', desc: currentLang === 'en' ? 'Landing page for a dental practice.' : 'Лендінг для стоматологічної практики.' },
+                { name: 'Coffee Shop', desc: currentLang === 'en' ? 'Cozy one-pager for a local café.' : 'Затишний односторінковий сайт для місцевої кавʼярні.' },
+                { name: 'Yoga Studio', desc: currentLang === 'en' ? 'Calm, minimal site for a yoga instructor.' : 'Спокійний, мінімалістичний сайт для інструктора з йоги.' },
+                { name: 'Barber Shop', desc: currentLang === 'en' ? 'Bold, masculine design for barbers.' : 'Сміливий, маскулінний дизайн для барбершопу.' },
+                { name: 'Florist', desc: currentLang === 'en' ? 'Delicate floral-themed business card site.' : 'Ніжний сайт-візитка у квітковій тематиці.' },
+                { name: 'Photographer', desc: currentLang === 'en' ? 'Portfolio site for a wedding photographer.' : 'Сайт-портфоліо для весільного фотографа.' },
+                { name: 'Bakery', desc: currentLang === 'en' ? 'Sweet, warm design for a home bakery.' : 'Солодкий, теплий дизайн для домашньої пекарні.' }
+            ];
+        }
 
-        const portfolioSlider = document.getElementById('portfolioSlider');
-        portfolioData.forEach((site, i) => {
-            const card = document.createElement('div');
-            card.className = 'portfolio-card';
-            card.innerHTML = `
-                <div class="portfolio-img">📸 Screenshot of <strong>${site.name}</strong></div>
-                <div class="portfolio-info">
-                    <h4>${site.name}</h4>
-                    <p class="portfolio-tags">${site.tags}</p>
-                    <p style="font-size:0.9rem;color:var(--text-secondary);margin-bottom:0.75rem;">${site.desc}</p>
-                    <a href="https://github.com/yourusername/project${i+1}" target="_blank" rel="noopener">GitHub ↗</a>
-                    &nbsp;·&nbsp;
-                    <a href="#" onclick="alert('Live preview of ${site.name}')">Live Preview ↗</a>
-                </div>`;
-            portfolioSlider.appendChild(card);
-        });
+        function renderPortfolio() {
+            const t = translations[currentLang];
+            const portfolioSlider = document.getElementById('portfolioSlider');
+            portfolioSlider.innerHTML = '';
+            getPortfolioData().forEach((site, i) => {
+                const card = document.createElement('div');
+                card.className = 'portfolio-card';
+                card.innerHTML = `
+                    <div class="portfolio-img">📸 ${currentLang === 'en' ? 'Screenshot of' : 'Скріншот'} <strong>${site.name}</strong></div>
+                    <div class="portfolio-info">
+                        <h4>${site.name}</h4>
+                        <p class="portfolio-tags">${t.portfolioTags}</p>
+                        <p style="font-size:0.9rem;color:var(--text-secondary);margin-bottom:0.75rem;">${site.desc}</p>
+                        <a href="https://github.com/yourusername/project${i+1}" target="_blank" rel="noopener">GitHub ↗</a>
+                        &nbsp;·&nbsp;
+                        <a href="#" onclick="alert('${t.portfolioAlert} ${site.name}')">Live Preview ↗</a>
+                    </div>`;
+                portfolioSlider.appendChild(card);
+            });
+        }
 
         // ========== STICKER PACKS DATA ==========
-        const stickerData = [
-            { name: 'Cute Animals', count: '12 stickers', emoji: '🐱🐶🐰' },
-            { name: 'Reaction Pack', count: '10 stickers', emoji: '😂😍😭' },
-            { name: 'Anime Moods', count: '14 stickers', emoji: '🌸✨😤' }
-        ];
+        function renderStickers() {
+            const t = translations[currentLang];
+            const stickerData = [
+                { name: currentLang === 'en' ? 'Cute Animals' : 'Милі тварини', count: '12 ' + t.stickerCount, emoji: '🐱🐶🐰' },
+                { name: currentLang === 'en' ? 'Reaction Pack' : 'Реакції', count: '10 ' + t.stickerCount, emoji: '😂😍😭' },
+                { name: currentLang === 'en' ? 'Anime Moods' : 'Аніме настрій', count: '14 ' + t.stickerCount, emoji: '🌸✨😤' }
+            ];
 
-        const stickersGrid = document.getElementById('stickersGrid');
-        stickerData.forEach(pack => {
-            const card = document.createElement('div');
-            card.className = 'sticker-card';
-            card.innerHTML = `
-                <div class="sticker-preview">
-                    <div class="sticker-icon">${pack.emoji.slice(0,2)}</div>
-                    <div class="sticker-icon">${pack.emoji.slice(2,4)}</div>
-                    <div class="sticker-icon">${pack.emoji.slice(4,6)}</div>
-                </div>
-                <h3>${pack.name}</h3>
-                <p class="sticker-count">${pack.count}</p>
-                <span class="price-tag">$15</span>`;
-            stickersGrid.appendChild(card);
-        });
+            const stickersGrid = document.getElementById('stickersGrid');
+            stickersGrid.innerHTML = '';
+            stickerData.forEach(pack => {
+                const card = document.createElement('div');
+                card.className = 'sticker-card';
+                card.innerHTML = `
+                    <div class="sticker-preview">
+                        <div class="sticker-icon">${pack.emoji.slice(0,2)}</div>
+                        <div class="sticker-icon">${pack.emoji.slice(2,4)}</div>
+                        <div class="sticker-icon">${pack.emoji.slice(4,6)}</div>
+                    </div>
+                    <h3>${pack.name}</h3>
+                    <p class="sticker-count">${pack.count}</p>
+                    <span class="price-tag">$15</span>`;
+                stickersGrid.appendChild(card);
+            });
+        }
 
         // ========== INVITATIONS DATA ==========
-        const invitationsGrid = document.getElementById('invitationsGrid');
-        const invitationNames = [
-            'Wedding — Golden Elegance',
-            'Birthday — Neon Party',
-            'Baby Shower — Soft Clouds',
-            'Graduation — Bold & Modern',
-            'Christmas Dinner'
-        ];
-        invitationNames.forEach(name => {
-            const item = document.createElement('div');
-            item.className = 'gallery-item';
-            item.textContent = name;
-            item.addEventListener('click', () => alert(`Full preview of: ${name}`));
-            invitationsGrid.appendChild(item);
-        });
+        function renderInvitations() {
+            const invitationNames = currentLang === 'en' ?
+                ['Wedding — Golden Elegance', 'Birthday — Neon Party', 'Baby Shower — Soft Clouds', 'Graduation — Bold & Modern', 'Christmas Dinner'] :
+                ['Весілля — Золота елегантність', 'День народження — Неонова вечірка', 'Baby Shower — Ніжні хмаринки', 'Випускний — Сміливий і сучасний', 'Різдвяна вечеря'];
 
-        // ========== AI GALLERY DATA ==========
+            const invitationsGrid = document.getElementById('invitationsGrid');
+            invitationsGrid.innerHTML = '';
+            invitationNames.forEach(name => {
+                const item = document.createElement('div');
+                item.className = 'gallery-item';
+                item.textContent = name;
+                item.addEventListener('click', () => alert(`${currentLang === 'en' ? 'Full preview of:' : 'Повний перегляд:'} ${name}`));
+                invitationsGrid.appendChild(item);
+            });
+        }
+
+        // ========== AI GALLERY ==========
         const aiItems = [
-            { name: 'Sakura Wallpaper', cat: 'wallpaper' },
-            { name: 'Neon City', cat: 'wallpaper' },
-            { name: 'Quiet Forest', cat: 'wallpaper' },
-            { name: 'Anime Girl Avatar', cat: 'avatar' },
-            { name: 'Samurai Avatar', cat: 'avatar' },
-            { name: 'Cat Maid Avatar', cat: 'avatar' },
-            { name: 'Dragon Illustration', cat: 'illustration' },
-            { name: 'Mecha Robot', cat: 'illustration' },
-            { name: 'Magical Girl', cat: 'illustration' },
-            { name: 'Cyberpunk Alley', cat: 'wallpaper' },
-            { name: 'Fox Spirit Avatar', cat: 'avatar' },
-            { name: 'Castle in Sky', cat: 'illustration' }
+            { name: 'Sakura Wallpaper', nameUA: 'Сакура', cat: 'wallpaper' },
+            { name: 'Neon City', nameUA: 'Неонове місто', cat: 'wallpaper' },
+            { name: 'Quiet Forest', nameUA: 'Тихий ліс', cat: 'wallpaper' },
+            { name: 'Anime Girl Avatar', nameUA: 'Аватар аніме-дівчини', cat: 'avatar' },
+            { name: 'Samurai Avatar', nameUA: 'Аватар самурая', cat: 'avatar' },
+            { name: 'Cat Maid Avatar', nameUA: 'Аватар кішки-служниці', cat: 'avatar' },
+            { name: 'Dragon Illustration', nameUA: 'Ілюстрація дракона', cat: 'illustration' },
+            { name: 'Mecha Robot', nameUA: 'Меха-робот', cat: 'illustration' },
+            { name: 'Magical Girl', nameUA: 'Дівчина-чарівниця', cat: 'illustration' },
+            { name: 'Cyberpunk Alley', nameUA: 'Кіберпанк-провулок', cat: 'wallpaper' },
+            { name: 'Fox Spirit Avatar', nameUA: 'Аватар духа лисиці', cat: 'avatar' },
+            { name: 'Castle in Sky', nameUA: 'Замок у небі', cat: 'illustration' }
         ];
 
         function renderAIGrid(filter = 'all') {
@@ -1140,8 +1432,8 @@
             filtered.forEach(item => {
                 const div = document.createElement('div');
                 div.className = 'ai-item';
-                div.textContent = item.name;
-                div.addEventListener('click', () => alert(`AI-generated: ${item.name} (${item.cat})`));
+                div.textContent = currentLang === 'ua' ? item.nameUA : item.name;
+                div.addEventListener('click', () => alert(`${currentLang === 'en' ? 'AI-generated:' : 'AI-генерація:'} ${currentLang === 'ua' ? item.nameUA : item.name}`));
                 grid.appendChild(div);
             });
         }
@@ -1153,35 +1445,48 @@
                 renderAIGrid(btn.dataset.filter);
             });
         });
-        renderAIGrid();
 
-        // ========== COOKBOOK BUTTON ==========
+        // ========== RENDER ALL DYNAMIC CONTENT ==========
+        function renderAllDynamicContent() {
+            renderPortfolio();
+            renderStickers();
+            renderInvitations();
+            renderAIGrid();
+        }
+
+        // Initial render
+        renderAllDynamicContent();
+
+        // Re-render when language changes
+        const originalSwitch = switchLanguage;
+        switchLanguage = function(lang) {
+            originalSwitch(lang);
+            renderAllDynamicContent();
+        };
+
+        // ========== COOKBOOK ==========
         document.getElementById('cookbookBtn').addEventListener('click', () => {
-            showToast('📖 Cookbook link sent to your Telegram! (simulation)');
+            const t = translations[currentLang];
+            showToast(t.toastCookbook);
         });
 
         // ========== CONTACT FORM ==========
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
+            const t = translations[currentLang];
             const name = document.getElementById('name').value.trim();
             const telegram = document.getElementById('telegram').value.trim();
-            const service = document.getElementById('service').value;
             const message = document.getElementById('message').value.trim();
 
             if (!name || !telegram || !message) {
-                showToast('❌ Please fill all required fields.');
+                showToast(t.toastError);
                 return;
             }
 
-            const payload = {
-                name,
-                telegram,
-                service: service || 'Not specified',
-                message
-            };
-
+            const service = document.getElementById('service').value;
+            const payload = { name, telegram, service: service || 'Not specified', message };
             console.log('📩 Data ready for Telegram bot:', payload);
-            showToast('✅ Request sent! I will contact you on Telegram soon.');
+            showToast(t.toastSuccess);
             this.reset();
         });
 
