@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VL Freelance — Code, Pixels & Stickers</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #fafaf9;
+            --surface: #ffffff;
+            --text: #1c1917;
+            --text-secondary: #57534e;
+            --accent: #0a0a0a;
+            --accent-hover: #292524;
+            --border: #e7e5e4;
+            --gold: #b45309;
+            --radius: 12px;
+            --shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.06);
+            --shadow-lg: 0 4px 24px rgba(0,0,0,0.10);
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ---------- TYPOGRAPHY ---------- */
+        h1,
+        h2,
+        h3 {
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin-bottom: 3rem;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--gold);
+            margin-bottom: 0.75rem;
+        }
+
+        .accent-text {
+            color: var(--gold);
+        }
+
+        /* ---------- LAYOUT ---------- */
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        /* ---------- HEADER ---------- */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(250, 250, 249, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 0;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            font-style: italic;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all var(--transition);
+            border: 2px solid transparent;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-outline {
+            border-color: var(--border);
+            color: var(--accent);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent);
+        }
+
+        /* ---------- HERO ---------- */
+        .hero {
+            min-height: 88vh;
+            display: flex;
+            align-items: center;
+            padding: 2rem 0 5rem;
+        }
+
+        .hero-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.8rem, 5vw, 4rem);
+            font-weight: 600;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-text {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 480px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-visual {
+            background: linear-gradient(135deg, #1c1917 0%, #292524 100%);
+            border-radius: 24px;
+            padding: 3rem;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .hero-visual-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-weight: 500;
+            font-size: 1.05rem;
+        }
+
+        .hero-visual-icon {
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        /* ---------- SERVICES ---------- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .service-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2rem;
+            transition: all var(--transition);
+        }
+
+        .service-card:hover {
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+
+        .service-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* ---------- PORTFOLIO SLIDER ---------- */
+        .portfolio-wrapper {
+            position: relative;
+        }
+
+        .portfolio-slider {
+            display: flex;
+            gap: 1.5rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding-bottom: 1rem;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .portfolio-slider::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .portfolio-slider::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 10px;
+        }
+
+        .portfolio-card {
+            min-width: 360px;
+            scroll-snap-align: start;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            flex-shrink: 0;
+            transition: all var(--transition);
+        }
+
+        .portfolio-card:hover {
+            box-shadow: var(--shadow-lg);
+        }
+
+        .portfolio-img {
+            width: 100%;
+            height: 220px;
+            background: #e7e5e4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .portfolio-info {
+            padding: 1.5rem;
+        }
+
+        .portfolio-info h4 {
+            margin-bottom: 0.3rem;
+        }
+
+        .portfolio-info .portfolio-tags {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+        }
+
+        .portfolio-info a {
+            color: var(--gold);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .portfolio-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* ---------- STICKER PACKS ---------- */
+        .stickers-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .sticker-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: all var(--transition);
+        }
+
+        .sticker-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+            border-color: var(--accent);
+        }
+
+        .sticker-preview {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 1.25rem;
+        }
+
+        .sticker-icon {
+            width: 64px;
+            height: 64px;
+            background: #f5f5f4;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .sticker-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .sticker-card .sticker-count {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+        }
+
+        .price-tag {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        /* ---------- INVITATIONS GALLERY ---------- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            aspect-ratio: 3 / 4;
+            background: #e7e5e4;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all var(--transition);
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 1rem;
+            border: 1px solid transparent;
+        }
+
+        .gallery-item:hover {
+            opacity: 0.85;
+            border-color: var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        /* ---------- AI GALLERY + FILTER ---------- */
+        .filter-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-tag {
+            padding: 8px 20px;
+            border-radius: 50px;
+            border: 1px solid var(--border);
+            background: transparent;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all var(--transition);
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+        }
+
+        .filter-tag.active,
+        .filter-tag:hover {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+        }
+
+        .ai-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .ai-item {
+            aspect-ratio: 1;
+            background: #e7e5e4;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.85rem;
+            transition: all var(--transition);
+            cursor: pointer;
+            text-align: center;
+            padding: 0.5rem;
+        }
+
+        .ai-item:hover {
+            opacity: 0.8;
+            box-shadow: var(--shadow);
+        }
+
+        /* ---------- COOKBOOK ---------- */
+        .cookbook-section {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 3rem;
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .cookbook-visual {
+            width: 180px;
+            height: 240px;
+            background: #e7e5e4;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            flex-shrink: 0;
+            box-shadow: var(--shadow);
+        }
+
+        .cookbook-content h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .cookbook-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            max-width: 500px;
+        }
+
+        /* ---------- PRICING ---------- */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .pricing-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: all var(--transition);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--accent);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .pricing-badge {
+            display: inline-block;
+            background: var(--gold);
+            color: #fff;
+            padding: 4px 14px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.3rem;
+        }
+
+        .pricing-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 600;
+            margin: 1rem 0;
+        }
+
+        .pricing-price span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            text-align: left;
+            margin: 1.5rem 0;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .pricing-card li {
+            padding: 7px 0;
+        }
+
+        .pricing-card li::before {
+            content: "✓ ";
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        /* ---------- CONTACT FORM ---------- */
+        .contact-wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 3rem;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: border var(--transition);
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(10, 10, 10, 0.05);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* ---------- FOOTER ---------- */
+        footer {
+            background: var(--accent);
+            color: #fff;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        footer .footer-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        footer .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color var(--transition);
+        }
+
+        footer .footer-links a:hover {
+            color: #fff;
+        }
+
+        footer .copyright {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+        }
+
+        /* ---------- TOAST ---------- */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: var(--accent);
+            color: #fff;
+            padding: 14px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            z-index: 200;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+            pointer-events: none;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .toast.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 900px) {
+            .hero-inner {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stickers-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.featured {
+                transform: none;
+            }
+
+            .cookbook-section {
+                flex-direction: column;
+                text-align: center;
+                padding: 2rem;
+            }
+
+            nav {
+                gap: 1rem;
+            }
+
+            .hero-visual {
+                padding: 2rem;
+            }
+
+            .portfolio-card {
+                min-width: 280px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header-inner {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .contact-wrapper {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">VL Freelance</a>
+            <nav>
+                <a href="#services">Services</a>
+                <a href="#portfolio">Work</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#contact" class="btn btn-primary">Get in touch</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+        <div class="container hero-inner">
+            <div class="hero-content">
+                <div class="hero-tag">✦ Available for projects</div>
+                <h1 class="hero-title">I turn your ideas into <span class="accent-text">code, pixels & stickers</span></h1>
+                <p class="hero-text">
+                    Full-stack visual freelancer. Business card websites, AI-generated art, Telegram sticker packs, and custom invitations — all from one person who actually gets your vision.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#portfolio" class="btn btn-primary">View my work</a>
+                    <a href="#pricing" class="btn btn-outline">See pricing</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-visual-item">
+                    <div class="hero-visual-icon">🌐</div>
+                    7 live websites on GitHub
+                </div>
+                <div class="hero-visual-item">
+                    <div class="hero-visual-icon">🎨</div>
+                    3 Telegram sticker packs
+                </div>
+                <div class="hero-visual-item">
+                    <div class="hero-visual-icon">💌</div>
+                    5 custom invitation designs
+                </div>
+                <div class="hero-visual-item">
+                    <div class="hero-visual-icon">🤖</div>
+                    AI-generated anime art & wallpapers
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SERVICES ===== -->
+    <section id="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">What I do</span>
+                <h2>Services</h2>
+                <p class="section-subtitle">One freelancer, a whole visual toolkit for your business.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <span class="service-icon">💻</span>
+                    <h3>Business Card Websites</h3>
+                    <p>Clean, responsive sites you receive as a file. Just add your domain & hosting — or let me handle it all.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">🎭</span>
+                    <h3>Telegram Stickers</h3>
+                    <p>Custom illustrated sticker packs for your brand, community, or just for fun. Delivered ready to upload.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">💌</span>
+                    <h3>Invitations</h3>
+                    <p>Digital or print-ready invitations for weddings, birthdays, and events. Every design is unique.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">🤖</span>
+                    <h3>AI Content</h3>
+                    <p>AI-generated wallpapers, avatars, and anime-style artwork. Perfect for branding, socials, or merch.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PORTFOLIO (WEBSITES) ===== -->
+    <section id="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Portfolio</span>
+                <h2>Websites I've built</h2>
+                <p class="section-subtitle">7 business card websites, each with live preview and source code.</p>
+            </div>
+            <div class="portfolio-wrapper">
+                <div class="portfolio-slider" id="portfolioSlider">
+                    <!-- 7 карток, заповню через JS -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== STICKER PACKS ===== -->
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Stickers</span>
+                <h2>Telegram Sticker Packs</h2>
+                <p class="section-subtitle">3 packs designed to make your chats stand out.</p>
+            </div>
+            <div class="stickers-grid" id="stickersGrid">
+                <!-- 3 паки, заповню через JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== INVITATIONS ===== -->
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Design</span>
+                <h2>Invitations</h2>
+                <p class="section-subtitle">5 custom designs for your most important moments.</p>
+            </div>
+            <div class="gallery-grid" id="invitationsGrid">
+                <!-- 5 запрошень, заповню через JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== AI GALLERY ===== -->
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">AI Art</span>
+                <h2>Generated Content</h2>
+                <p class="section-subtitle">Anime-style wallpapers, avatars, and illustrations — all created with AI.</p>
+            </div>
+            <div class="filter-tags" id="filterTags">
+                <button class="filter-tag active" data-filter="all">All</button>
+                <button class="filter-tag" data-filter="wallpaper">Wallpapers</button>
+                <button class="filter-tag" data-filter="avatar">Avatars</button>
+                <button class="filter-tag" data-filter="illustration">Illustrations</button>
+            </div>
+            <div class="ai-grid" id="aiGrid">
+                <!-- AI-арти, заповню через JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== COOKBOOK ===== -->
+    <section>
+        <div class="container">
+            <div class="cookbook-section">
+                <div class="cookbook-visual">📖</div>
+                <div class="cookbook-content">
+                    <span class="section-label">Free download</span>
+                    <h3>My English Cookbook</h3>
+                    <p>A collection of original recipes I wrote in English. Grab it for free — it's my way of saying thanks for stopping by.</p>
+                    <button class="btn btn-primary" id="cookbookBtn">Get the cookbook</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PRICING ===== -->
+    <section id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Pricing</span>
+                <h2>Clear rates, no surprises</h2>
+                <p class="section-subtitle">Everything is priced in USD. Payment via Etsy or direct invoice.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Website — File Only</h3>
+                    <p class="pricing-price">$50</p>
+                    <ul>
+                        <li>Fully coded business card site</li>
+                        <li>Responsive design</li>
+                        <li>Delivered as ZIP file</li>
+                        <li>You set up domain & hosting</li>
+                        <li>1 revision included</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline">Order now</a>
+                </div>
+                <div class="pricing-card featured">
+                    <span class="pricing-badge">Most popular</span>
+                    <h3>Website — Turnkey</h3>
+                    <p class="pricing-price">$100</p>
+                    <ul>
+                        <li>Everything from "File Only"</li>
+                        <li>Domain & hosting setup</li>
+                        <li>Full handover of all credentials</li>
+                        <li>SSL certificate configured</li>
+                        <li>2 revisions included</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">Order now</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Sticker Pack</h3>
+                    <p class="pricing-price">$15</p>
+                    <ul>
+                        <li>Custom illustrated stickers</li>
+                        <li>Telegram-ready format</li>
+                        <li>Full pack delivered</li>
+                        <li>1 revision included</li>
+                        <li>Commercial use OK</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline">Order now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Contact</span>
+                <h2>Let's work together</h2>
+                <p class="section-subtitle">Fill out the form and I'll reach out via Telegram.</p>
+            </div>
+            <div class="contact-wrapper">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telegram">Telegram @username</label>
+                        <input type="text" id="telegram" name="telegram" placeholder="@yourusername" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Service Interested In</label>
+                        <select id="service" name="service">
+                            <option value="">— Select —</option>
+                            <option value="Website File Only ($50)">Website — File Only ($50)</option>
+                            <option value="Website Turnkey ($100)">Website — Turnkey ($100)</option>
+                            <option value="Sticker Pack ($15)">Sticker Pack ($15)</option>
+                            <option value="Invitation Design">Invitation Design</option>
+                            <option value="AI Content">AI Content</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Project Details</label>
+                        <textarea id="message" name="message" placeholder="Tell me about your project..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width:100%;">Send via Telegram</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#services">Services</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <p class="copyright">© <span id="currentYear"></span> VL Freelance. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- ===== TOAST ===== -->
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // ========== DYNAMIC YEAR ==========
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // ========== PORTFOLIO DATA ==========
+        const portfolioData = [
+            { name: 'Dental Clinic', tags: 'HTML · CSS · JS', desc: 'Landing page for a dental practice.' },
+            { name: 'Coffee Shop', tags: 'HTML · CSS · JS', desc: 'Cozy one-pager for a local café.' },
+            { name: 'Yoga Studio', tags: 'HTML · CSS · JS', desc: 'Calm, minimal site for a yoga instructor.' },
+            { name: 'Barber Shop', tags: 'HTML · CSS · JS', desc: 'Bold, masculine design for barbers.' },
+            { name: 'Florist', tags: 'HTML · CSS · JS', desc: 'Delicate floral-themed business card site.' },
+            { name: 'Photographer', tags: 'HTML · CSS · JS', desc: 'Portfolio site for a wedding photographer.' },
+            { name: 'Bakery', tags: 'HTML · CSS · JS', desc: 'Sweet, warm design for a home bakery.' }
+        ];
+
+        const portfolioSlider = document.getElementById('portfolioSlider');
+        portfolioData.forEach((site, i) => {
+            const card = document.createElement('div');
+            card.className = 'portfolio-card';
+            card.innerHTML = `
+                <div class="portfolio-img">📸 Screenshot of <strong>${site.name}</strong></div>
+                <div class="portfolio-info">
+                    <h4>${site.name}</h4>
+                    <p class="portfolio-tags">${site.tags}</p>
+                    <p style="font-size:0.9rem;color:var(--text-secondary);margin-bottom:0.75rem;">${site.desc}</p>
+                    <a href="https://github.com/yourusername/project${i+1}" target="_blank" rel="noopener">GitHub ↗</a>
+                    &nbsp;·&nbsp;
+                    <a href="#" onclick="alert('Live preview of ${site.name}')">Live Preview ↗</a>
+                </div>`;
+            portfolioSlider.appendChild(card);
+        });
+
+        // ========== STICKER PACKS DATA ==========
+        const stickerData = [
+            { name: 'Cute Animals', count: '12 stickers', emoji: '🐱🐶🐰' },
+            { name: 'Reaction Pack', count: '10 stickers', emoji: '😂😍😭' },
+            { name: 'Anime Moods', count: '14 stickers', emoji: '🌸✨😤' }
+        ];
+
+        const stickersGrid = document.getElementById('stickersGrid');
+        stickerData.forEach(pack => {
+            const card = document.createElement('div');
+            card.className = 'sticker-card';
+            card.innerHTML = `
+                <div class="sticker-preview">
+                    <div class="sticker-icon">${pack.emoji.slice(0,2)}</div>
+                    <div class="sticker-icon">${pack.emoji.slice(2,4)}</div>
+                    <div class="sticker-icon">${pack.emoji.slice(4,6)}</div>
+                </div>
+                <h3>${pack.name}</h3>
+                <p class="sticker-count">${pack.count}</p>
+                <span class="price-tag">$15</span>`;
+            stickersGrid.appendChild(card);
+        });
+
+        // ========== INVITATIONS DATA ==========
+        const invitationsGrid = document.getElementById('invitationsGrid');
+        const invitationNames = [
+            'Wedding — Golden Elegance',
+            'Birthday — Neon Party',
+            'Baby Shower — Soft Clouds',
+            'Graduation — Bold & Modern',
+            'Christmas Dinner'
+        ];
+        invitationNames.forEach(name => {
+            const item = document.createElement('div');
+            item.className = 'gallery-item';
+            item.textContent = name;
+            item.addEventListener('click', () => alert(`Full preview of: ${name}`));
+            invitationsGrid.appendChild(item);
+        });
+
+        // ========== AI GALLERY DATA ==========
+        const aiItems = [
+            { name: 'Sakura Wallpaper', cat: 'wallpaper' },
+            { name: 'Neon City', cat: 'wallpaper' },
+            { name: 'Quiet Forest', cat: 'wallpaper' },
+            { name: 'Anime Girl Avatar', cat: 'avatar' },
+            { name: 'Samurai Avatar', cat: 'avatar' },
+            { name: 'Cat Maid Avatar', cat: 'avatar' },
+            { name: 'Dragon Illustration', cat: 'illustration' },
+            { name: 'Mecha Robot', cat: 'illustration' },
+            { name: 'Magical Girl', cat: 'illustration' },
+            { name: 'Cyberpunk Alley', cat: 'wallpaper' },
+            { name: 'Fox Spirit Avatar', cat: 'avatar' },
+            { name: 'Castle in Sky', cat: 'illustration' }
+        ];
+
+        function renderAIGrid(filter = 'all') {
+            const grid = document.getElementById('aiGrid');
+            grid.innerHTML = '';
+            const filtered = filter === 'all' ? aiItems : aiItems.filter(item => item.cat === filter);
+            filtered.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'ai-item';
+                div.textContent = item.name;
+                div.addEventListener('click', () => alert(`AI-generated: ${item.name} (${item.cat})`));
+                grid.appendChild(div);
+            });
+        }
+
+        document.querySelectorAll('.filter-tag').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-tag').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                renderAIGrid(btn.dataset.filter);
+            });
+        });
+        renderAIGrid();
+
+        // ========== COOKBOOK BUTTON ==========
+        document.getElementById('cookbookBtn').addEventListener('click', () => {
+            showToast('📖 Cookbook link sent to your Telegram! (simulation)');
+        });
+
+        // ========== CONTACT FORM ==========
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const telegram = document.getElementById('telegram').value.trim();
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value.trim();
+
+            if (!name || !telegram || !message) {
+                showToast('❌ Please fill all required fields.');
+                return;
+            }
+
+            const payload = {
+                name,
+                telegram,
+                service: service || 'Not specified',
+                message
+            };
+
+            console.log('📩 Data ready for Telegram bot:', payload);
+            showToast('✅ Request sent! I will contact you on Telegram soon.');
+            this.reset();
+        });
+
+        // ========== TOAST ==========
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.classList.add('visible');
+            clearTimeout(toast._timeout);
+            toast._timeout = setTimeout(() => toast.classList.remove('visible'), 3000);
+        }
+    </script>
+
+</body>
+</html>
