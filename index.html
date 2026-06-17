@@ -55,7 +55,8 @@
             border-bottom: 1px solid var(--border); padding: 16px 0;
         }
         .header-inner { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 600; font-style: italic; color: var(--accent); text-decoration: none; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 600; font-style: italic; color: var(--accent); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+        .logo-placeholder { width: 36px; height: 36px; background: var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: var(--text-secondary); font-style: normal; }
         nav { display: flex; gap: 1.5rem; align-items: center; }
         nav a { text-decoration: none; color: var(--text-secondary); font-weight: 500; font-size: 0.95rem; transition: color var(--transition); }
         nav a:hover { color: var(--accent); }
@@ -83,6 +84,12 @@
         .hero-visual { background: linear-gradient(135deg, #1c1917 0%, #292524 100%); border-radius: 24px; padding: 3rem; color: #fff; display: flex; flex-direction: column; gap: 1.2rem; box-shadow: var(--shadow-lg); }
         .hero-visual-item { display: flex; align-items: center; gap: 1rem; font-weight: 500; font-size: 1.05rem; }
         .hero-visual-icon { width: 44px; height: 44px; background: rgba(255,255,255,0.08); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
+
+        /* ---------- ABOUT ---------- */
+        .about-section { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 3rem; display: flex; gap: 3rem; align-items: center; }
+        .about-avatar { width: 120px; height: 120px; background: #e7e5e4; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 3rem; flex-shrink: 0; }
+        .about-content h3 { font-size: 1.6rem; margin-bottom: 0.5rem; }
+        .about-content p { color: var(--text-secondary); max-width: 600px; }
 
         /* ---------- PORTFOLIO GRID ---------- */
         .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.5rem; }
@@ -121,7 +128,7 @@
         body.modal-open { overflow: hidden; }
 
         /* ---------- STICKER CARDS ---------- */
-        .stickers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.5rem; }
+        .stickers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.5rem; }
         .sticker-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; text-align: center; transition: all var(--transition); position: relative; }
         .sticker-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); border-color: var(--accent); }
         .sticker-badge { position: absolute; top: 12px; right: 12px; padding: 4px 12px; border-radius: 50px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
@@ -131,11 +138,13 @@
         .sticker-preview:hover img { transform: scale(1.05); }
         .sticker-preview .sticker-placeholder { width: 100%; height: 180px; background: #f5f5f4; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 3rem; }
         .sticker-card h3 { font-size: 1rem; margin-bottom: 0.25rem; }
-        .sticker-count { font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.5rem; }
+        .sticker-count { font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.75rem; }
         .free-tag { display: inline-block; background: var(--green); color: #fff; padding: 5px 16px; border-radius: 50px; font-weight: 600; font-size: 0.85rem; }
+        .sticker-link { display: inline-block; background: var(--accent); color: #fff; padding: 8px 20px; border-radius: 8px; font-weight: 600; font-size: 0.9rem; text-decoration: none; margin-top: 0.5rem; transition: all var(--transition); }
+        .sticker-link:hover { background: var(--accent-hover); }
 
         /* ---------- INVITATIONS ---------- */
-        .invitations-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
+        .invitations-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
         .invitation-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: all var(--transition); cursor: pointer; }
         .invitation-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
         .invitation-img { aspect-ratio: 3 / 4; background: #e7e5e4; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
@@ -156,14 +165,14 @@
         .custom-section p { color: var(--text-secondary); margin-bottom: 1.5rem; max-width: 500px; margin-left: auto; margin-right: auto; }
 
         /* ---------- PRICING ---------- */
-        .pricing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
-        .pricing-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem 1.5rem; text-align: center; transition: all var(--transition); }
+        .pricing-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; }
+        .pricing-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem 1rem; text-align: center; transition: all var(--transition); }
         .pricing-card.featured { border-color: var(--accent); box-shadow: var(--shadow-lg); }
-        .pricing-badge { display: inline-block; background: var(--gold); color: #fff; padding: 4px 14px; border-radius: 50px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 1rem; }
-        .pricing-card h3 { font-size: 1.1rem; }
-        .pricing-price { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 600; margin: 0.75rem 0; }
-        .pricing-card ul { list-style: none; text-align: left; margin: 1rem 0; color: var(--text-secondary); font-size: 0.85rem; }
-        .pricing-card li { padding: 5px 0; }
+        .pricing-badge { display: inline-block; background: var(--gold); color: #fff; padding: 4px 14px; border-radius: 50px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.75rem; }
+        .pricing-card h3 { font-size: 0.95rem; }
+        .pricing-price { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 600; margin: 0.5rem 0; }
+        .pricing-card ul { list-style: none; text-align: left; margin: 0.75rem 0; color: var(--text-secondary); font-size: 0.8rem; }
+        .pricing-card li { padding: 4px 0; }
         .pricing-card li::before { content: "✓ "; color: var(--gold); font-weight: 700; }
 
         /* ---------- CONTACT ---------- */
@@ -186,6 +195,7 @@
         .toast.visible { opacity: 1; transform: translateY(0); }
 
         /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 1100px) { .pricing-grid { grid-template-columns: repeat(3, 1fr); } }
         @media (max-width: 900px) {
             .hero-inner { grid-template-columns: 1fr; gap: 2rem; }
             .pricing-grid { grid-template-columns: repeat(2, 1fr); }
@@ -193,6 +203,7 @@
             .hero-visual { padding: 2rem; }
             .header-inner { flex-wrap: wrap; gap: 0.75rem; }
             .portfolio-grid { grid-template-columns: 1fr; }
+            .about-section { flex-direction: column; text-align: center; padding: 2rem; }
         }
         @media (max-width: 600px) {
             nav { flex-wrap: wrap; gap: 0.75rem; justify-content: center; }
@@ -206,9 +217,11 @@
     <!-- ===== HEADER ===== -->
     <header>
         <div class="container header-inner">
-            <a href="#" class="logo">VL Freelance</a>
+            <a href="#" class="logo">
+                <span class="logo-placeholder">logo</span>
+                VL Freelance
+            </a>
             <nav>
-                <a href="#portfolio" data-lang-key="navPortfolio">Portfolio</a>
                 <a href="#websites" data-lang-key="navWebsites">Websites</a>
                 <a href="#stickers" data-lang-key="navStickers">Stickers</a>
                 <a href="#invitations" data-lang-key="navInvitations">Invitations</a>
@@ -230,7 +243,7 @@
                 <h1 class="hero-title" data-lang-key="heroTitle">I turn your ideas into <span class="accent-text">code, pixels & stickers</span></h1>
                 <p class="hero-text" data-lang-key="heroText">Full-stack visual freelancer. Business card websites, AI-generated art, Telegram sticker packs, and custom invitations — all from one person who actually gets your vision.</p>
                 <div class="hero-buttons">
-                    <a href="#portfolio" class="btn btn-primary" data-lang-key="heroBtn1">View portfolio</a>
+                    <a href="#websites" class="btn btn-primary" data-lang-key="heroBtn1">View portfolio</a>
                     <a href="#pricing" class="btn btn-outline" data-lang-key="heroBtn2">See pricing</a>
                 </div>
             </div>
@@ -238,7 +251,21 @@
                 <div class="hero-visual-item"><div class="hero-visual-icon">🌐</div><span data-lang-key="heroItem1">Business card websites</span></div>
                 <div class="hero-visual-item"><div class="hero-visual-icon">🎨</div><span data-lang-key="heroItem2">Free sticker packs</span></div>
                 <div class="hero-visual-item"><div class="hero-visual-icon">💌</div><span data-lang-key="heroItem3">Custom invitations</span></div>
-                <div class="hero-visual-item"><div class="hero-visual-icon">🤖</div><span data-lang-key="heroItem4">AI-generated anime art</span></div>
+                <div class="hero-visual-item"><div class="hero-visual-icon">🤖</div><span data-lang-key="heroItem4">AI-generated art</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT ME ===== -->
+    <section>
+        <div class="container">
+            <div class="about-section">
+                <div class="about-avatar">👩‍💻</div>
+                <div class="about-content">
+                    <span class="section-label" data-lang-key="aboutLabel">About me</span>
+                    <h3 data-lang-key="aboutTitle">Hi, I'm Dara</h3>
+                    <p data-lang-key="aboutDesc">I handle your freelance project from start to finish — exactly the way you need it. Websites, stickers, invitations, AI-generated visuals. Whatever your request, I'll make it happen with attention to detail and a sharp eye for design. Let's build something great together.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -261,7 +288,7 @@
             <div class="section-header">
                 <span class="section-label" data-lang-key="stickersLabel">Portfolio</span>
                 <h2 data-lang-key="stickersTitle">Sticker Packs</h2>
-                <p class="section-subtitle" data-lang-key="stickersSubtitle">5 ready-made packs — free to download and use.</p>
+                <p class="section-subtitle" data-lang-key="stickersSubtitle">4 ready-made packs — free to download and use.</p>
             </div>
             <div class="stickers-grid" id="stickersGrid"></div>
             <div class="custom-section" style="margin-top: 3rem;">
@@ -278,7 +305,7 @@
             <div class="section-header">
                 <span class="section-label" data-lang-key="invitationsLabel">Portfolio</span>
                 <h2 data-lang-key="invitationsTitle">Invitations</h2>
-                <p class="section-subtitle" data-lang-key="invitationsSubtitle">5 custom designs — not for sale, examples of my work.</p>
+                <p class="section-subtitle" data-lang-key="invitationsSubtitle">Not for sale — an example of my custom design work.</p>
             </div>
             <div class="invitations-grid" id="invitationsGrid"></div>
             <div class="custom-section" style="margin-top: 3rem;">
@@ -294,8 +321,8 @@
         <div class="container">
             <div class="section-header">
                 <span class="section-label" data-lang-key="aiLabel">Portfolio</span>
-                <h2 data-lang-key="aiTitle">AI-Generated Art</h2>
-                <p class="section-subtitle" data-lang-key="aiSubtitle">Anime-style wallpapers, avatars, and illustrations — all created with AI.</p>
+                <h2 data-lang-key="aiTitle">Drikoopler</h2>
+                <p class="section-subtitle" data-lang-key="aiSubtitle">AI-generated visuals — wallpapers, avatars, and illustrations.</p>
             </div>
             <div class="ai-grid" id="aiGrid"></div>
         </div>
@@ -336,26 +363,38 @@
                     <a href="#contact" class="btn btn-primary" data-lang-key="orderNow">Order now</a>
                 </div>
                 <div class="pricing-card">
-                    <h3 data-lang-key="pricing3Title">Custom Invitation</h3>
-                    <p class="pricing-price" id="priceInvitation">$10</p>
+                    <h3 data-lang-key="pricing3Title">Custom Sticker Pack</h3>
+                    <p class="pricing-price" id="priceStickers">$15</p>
                     <ul>
-                        <li data-lang-key="pricing3Item1">Unique design from scratch</li>
-                        <li data-lang-key="pricing3Item2">Digital or print-ready</li>
-                        <li data-lang-key="pricing3Item3">Delivered as high-res file</li>
+                        <li data-lang-key="pricing3Item1">20 unique stickers</li>
+                        <li data-lang-key="pricing3Item2">Telegram-ready format</li>
+                        <li data-lang-key="pricing3Item3">Full pack delivered</li>
                         <li data-lang-key="pricing3Item4">1 revision included</li>
-                        <li data-lang-key="pricing3Item5">Personal & commercial use</li>
+                        <li data-lang-key="pricing3Item5">Commercial use OK</li>
                     </ul>
                     <a href="#contact" class="btn btn-outline" data-lang-key="orderNow">Order now</a>
                 </div>
                 <div class="pricing-card">
-                    <h3 data-lang-key="pricing4Title">AI Photo Pack</h3>
+                    <h3 data-lang-key="pricing4Title">Custom Invitation</h3>
+                    <p class="pricing-price" id="priceInvitation">$10</p>
+                    <ul>
+                        <li data-lang-key="pricing4Item1">Unique design from scratch</li>
+                        <li data-lang-key="pricing4Item2">Digital or print-ready</li>
+                        <li data-lang-key="pricing4Item3">Delivered as high-res file</li>
+                        <li data-lang-key="pricing4Item4">1 revision included</li>
+                        <li data-lang-key="pricing4Item5">Personal & commercial use</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline" data-lang-key="orderNow">Order now</a>
+                </div>
+                <div class="pricing-card">
+                    <h3 data-lang-key="pricing5Title">AI Photo Pack</h3>
                     <p class="pricing-price" id="priceAIPack">$5</p>
                     <ul>
-                        <li data-lang-key="pricing4Item1">10 AI-generated images</li>
-                        <li data-lang-key="pricing4Item2">Anime-style / custom theme</li>
-                        <li data-lang-key="pricing4Item3">High-resolution files</li>
-                        <li data-lang-key="pricing4Item4">Commercial use OK</li>
-                        <li data-lang-key="pricing4Item5">Fast delivery</li>
+                        <li data-lang-key="pricing5Item1">10 AI-generated images</li>
+                        <li data-lang-key="pricing5Item2">Custom theme</li>
+                        <li data-lang-key="pricing5Item3">High-resolution files</li>
+                        <li data-lang-key="pricing5Item4">Commercial use OK</li>
+                        <li data-lang-key="pricing5Item5">Fast delivery</li>
                     </ul>
                     <a href="#contact" class="btn btn-outline" data-lang-key="orderNow">Order now</a>
                 </div>
@@ -428,7 +467,6 @@
     <div class="toast" id="toast"></div>
 
     <script>
-        // ========== FILE NAMES ==========
         const siteScreenshots = {
             en: ['Site.en1.png', 'Site.en2.png', 'Site.en3.png', 'Site.en4.png', 'Site.en5.png', 'Site7.png'],
             ua: ['Site.ua1.png', 'Site.ua2.png', 'Site.ua3.png', 'Site.ua4.png', 'Site.ua5.png', 'Site6.png']
@@ -453,48 +491,54 @@
             ]
         };
 
-        const stickerFiles = ['IMG_2846.png', 'IMG_2845.png', 'IMG_2844.png', 'IMG_2843.png', 'IMG_2842.png'];
+        const stickerPacksData = [
+            { name: 'Drikoopler Dino', file: 'IMG_2846.png', link: 'https://t.me/addstickers/DrikooplerDino' },
+            { name: 'Drikoopler 2', file: 'IMG_2845.png', link: 'https://t.me/addstickers/Drikoopler2' },
+            { name: 'Drikoopler', file: 'IMG_2844.png', link: 'https://t.me/addstickers/Drikoopler' },
+            { name: 'Drikoopler YT', file: 'IMG_2843.png', link: 'https://t.me/addstickers/DrikooplerYT' }
+        ];
 
         const invitationFiles = {
-            en: ['IMG_2847.png', 'IMG_2853.png', 'IMG_2855.png', 'IMG_2857.png', 'IMG_2849.png'],
-            ua: ['IMG_2847.png', 'IMG_2853.png', 'IMG_2855.png', 'IMG_2857.png', 'IMG_2850.png']
+            en: [{ name: 'Invitation', file: 'IMG_2847.png' }],
+            ua: [{ name: 'Запрошення', file: 'IMG_2847.png' }]
         };
 
-        // ========== AI ITEMS (10 items) ==========
         const aiItems = [
             { name: 'Sakura Wallpaper', nameUA: 'Сакура' },
             { name: 'Neon City', nameUA: 'Неонове місто' },
             { name: 'Quiet Forest', nameUA: 'Тихий ліс' },
-            { name: 'Anime Girl Avatar', nameUA: 'Аватар аніме-дівчини' },
-            { name: 'Samurai Avatar', nameUA: 'Аватар самурая' },
+            { name: 'Cyberpunk Alley', nameUA: 'Кіберпанк-провулок' },
             { name: 'Dragon Illustration', nameUA: 'Ілюстрація дракона' },
             { name: 'Mecha Robot', nameUA: 'Меха-робот' },
-            { name: 'Magical Girl', nameUA: 'Дівчина-чарівниця' },
+            { name: 'Castle in Sky', nameUA: 'Замок у небі' },
             { name: 'Fox Spirit', nameUA: 'Дух лисиці' },
-            { name: 'Castle in Sky', nameUA: 'Замок у небі' }
+            { name: 'Samurai Avatar', nameUA: 'Аватар самурая' },
+            { name: 'Magical Girl', nameUA: 'Дівчина-чарівниця' }
         ];
 
-        // ========== TRANSLATIONS ==========
         const translations = {
             en: {
-                navPortfolio: 'Portfolio', navWebsites: 'Websites', navStickers: 'Stickers', navInvitations: 'Invitations', navAI: 'AI Art', navContact: 'Order',
+                navWebsites: 'Websites', navStickers: 'Stickers', navInvitations: 'Invitations', navAI: 'AI Art', navContact: 'Order',
                 heroTag: '✦ Available for projects',
                 heroTitle: 'I turn your ideas into <span class="accent-text">code, pixels & stickers</span>',
                 heroText: 'Full-stack visual freelancer. Business card websites, AI-generated art, Telegram sticker packs, and custom invitations — all from one person who actually gets your vision.',
                 heroBtn1: 'View portfolio', heroBtn2: 'See pricing',
-                heroItem1: 'Business card websites', heroItem2: 'Free sticker packs', heroItem3: 'Custom invitations', heroItem4: 'AI-generated anime art',
+                heroItem1: 'Business card websites', heroItem2: 'Free sticker packs', heroItem3: 'Custom invitations', heroItem4: 'AI-generated art',
+                aboutLabel: 'About me', aboutTitle: "Hi, I'm Dara",
+                aboutDesc: "I handle your freelance project from start to finish — exactly the way you need it. Websites, stickers, invitations, AI-generated visuals. Whatever your request, I'll make it happen with attention to detail and a sharp eye for design. Let's build something great together.",
                 websitesLabel: 'Portfolio', websitesTitle: 'Websites', websitesSubtitle: 'Examples of business card websites I can create for you.',
-                stickersLabel: 'Portfolio', stickersTitle: 'Sticker Packs', stickersSubtitle: '5 ready-made packs — free to download and use.',
+                stickersLabel: 'Portfolio', stickersTitle: 'Sticker Packs', stickersSubtitle: '4 ready-made packs — free to download and use.',
                 customStickersTitle: 'Want custom stickers?', customStickersDesc: 'I create unique illustrated sticker packs tailored to your brand, community, or vibe.', customStickersBtn: 'Order custom pack',
-                invitationsLabel: 'Portfolio', invitationsTitle: 'Invitations', invitationsSubtitle: '5 custom designs — not for sale, examples of my work.',
+                invitationsLabel: 'Portfolio', invitationsTitle: 'Invitations', invitationsSubtitle: 'Not for sale — an example of my custom design work.',
                 customInvitationsTitle: 'Need your own design?', customInvitationsDesc: 'Every invitation is made from scratch. Weddings, birthdays, baby showers — you name it.', customInvitationsBtn: 'Order custom invitation',
-                aiLabel: 'Portfolio', aiTitle: 'AI-Generated Art', aiSubtitle: 'Anime-style wallpapers, avatars, and illustrations — all created with AI.',
+                aiLabel: 'Portfolio', aiTitle: 'Drikoopler', aiSubtitle: 'AI-generated visuals — wallpapers, avatars, and illustrations.',
                 pricingLabel: 'Pricing', pricingTitle: 'Clear rates, no surprises', pricingSubtitle: 'Payment via Etsy or direct invoice.',
                 pricing1Title: 'Website — File Only', pricing1Item1: 'Fully coded business card site', pricing1Item2: 'Responsive design', pricing1Item3: 'Delivered as ZIP file', pricing1Item4: 'You set up domain & hosting', pricing1Item5: '1 revision included',
                 pricingBadge: 'Most popular',
                 pricing2Title: 'Website — Turnkey', pricing2Item1: 'Everything from "File Only"', pricing2Item2: 'Domain & hosting setup', pricing2Item3: 'Full handover of all credentials', pricing2Item4: 'SSL certificate configured', pricing2Item5: '2 revisions included',
-                pricing3Title: 'Custom Invitation', pricing3Item1: 'Unique design from scratch', pricing3Item2: 'Digital or print-ready', pricing3Item3: 'Delivered as high-res file', pricing3Item4: '1 revision included', pricing3Item5: 'Personal & commercial use',
-                pricing4Title: 'AI Photo Pack', pricing4Item1: '10 AI-generated images', pricing4Item2: 'Anime-style / custom theme', pricing4Item3: 'High-resolution files', pricing4Item4: 'Commercial use OK', pricing4Item5: 'Fast delivery',
+                pricing3Title: 'Custom Sticker Pack', pricing3Item1: '20 unique stickers', pricing3Item2: 'Telegram-ready format', pricing3Item3: 'Full pack delivered', pricing3Item4: '1 revision included', pricing3Item5: 'Commercial use OK',
+                pricing4Title: 'Custom Invitation', pricing4Item1: 'Unique design from scratch', pricing4Item2: 'Digital or print-ready', pricing4Item3: 'Delivered as high-res file', pricing4Item4: '1 revision included', pricing4Item5: 'Personal & commercial use',
+                pricing5Title: 'AI Photo Pack', pricing5Item1: '10 AI-generated images', pricing5Item2: 'Custom theme', pricing5Item3: 'High-resolution files', pricing5Item4: 'Commercial use OK', pricing5Item5: 'Fast delivery',
                 orderNow: 'Order now',
                 contactLabel: 'Contact', contactTitle: "Let's work together", contactSubtitle: "Fill out the form and I'll reach out via Telegram.",
                 formName: 'Your Name', formNamePlaceholder: 'John Doe',
@@ -504,9 +548,9 @@
                 formMessage: 'Project Details', formMessagePlaceholder: 'Tell me about your project...', formSubmit: 'Send via Telegram',
                 rights: 'All rights reserved.',
                 toastSuccess: '✅ Request sent! I will contact you on Telegram soon.', toastError: '❌ Please fill all required fields.',
-                portfolioTags: 'HTML · CSS · JS', stickerCount: 'Full pack', portfolioAlert: 'Live preview',
+                portfolioTags: 'HTML · CSS · JS', stickerCount: 'Full pack', livePreview: 'Live preview',
                 freeStickerPack: 'Free',
-                prices: { siteFile: '$50', siteTurnkey: '$100', invitation: '$10', aiPack: '$5', customSticker: '$15' },
+                prices: { siteFile: '$50', siteTurnkey: '$100', stickers: '$15', invitation: '$10', aiPack: '$5' },
                 sites: [
                     { name: 'Nailmaster', desc: 'Beauty salon landing page.' },
                     { name: 'Photography', desc: 'Photographer portfolio site.' },
@@ -514,41 +558,30 @@
                     { name: 'Coffebara', desc: 'Coffee shop cozy landing.' },
                     { name: 'Fitness', desc: 'Fitness trainer website.' },
                     { name: 'VORTAX', desc: 'Tech company landing page.' }
-                ],
-                stickerPacks: [
-                    { name: 'Sticker Pack 1', file: 'IMG_2846.png' },
-                    { name: 'Sticker Pack 2', file: 'IMG_2845.png' },
-                    { name: 'Sticker Pack 3', file: 'IMG_2844.png' },
-                    { name: 'Sticker Pack 4', file: 'IMG_2843.png' },
-                    { name: 'Sticker Pack 5', file: 'IMG_2842.png' }
-                ],
-                invitationNames: [
-                    { name: 'Invitation 1', file: 'IMG_2847.png' },
-                    { name: 'Invitation 2', file: 'IMG_2853.png' },
-                    { name: 'Invitation 3', file: 'IMG_2855.png' },
-                    { name: 'Invitation 4', file: 'IMG_2857.png' },
-                    { name: 'Invitation 5', file: 'IMG_2849.png' }
                 ]
             },
             ua: {
-                navPortfolio: 'Портфоліо', navWebsites: 'Сайти', navStickers: 'Стікери', navInvitations: 'Запрошення', navAI: 'Арти', navContact: 'Замовити',
+                navWebsites: 'Сайти', navStickers: 'Стікери', navInvitations: 'Запрошення', navAI: 'Арти', navContact: 'Замовити',
                 heroTag: '✦ Вільна для проєктів',
                 heroTitle: 'Я перетворюю ваші ідеї на <span class="accent-text">код, пікселі та стікери</span>',
                 heroText: "Full-stack візуальний фрілансер. Сайти-візитки, AI-генерований арт, стікерпаки для Telegram та індивідуальні запрошення — все від однієї людини, яка справді розуміє ваше бачення.",
                 heroBtn1: 'Переглянути портфоліо', heroBtn2: 'Переглянути ціни',
-                heroItem1: 'Сайти-візитки', heroItem2: 'Безкоштовні стікерпаки', heroItem3: 'Індивідуальні запрошення', heroItem4: 'AI-генерований аніме-арт',
+                heroItem1: 'Сайти-візитки', heroItem2: 'Безкоштовні стікерпаки', heroItem3: 'Індивідуальні запрошення', heroItem4: 'AI-генерований арт',
+                aboutLabel: 'Про мене', aboutTitle: 'Привіт, я Дара',
+                aboutDesc: 'Я виконую ваш фріланс-проєкт від початку до кінця — саме так, як вам потрібно. Сайти, стікери, запрошення, AI-генеровані зображення. Який би не був ваш запит, я реалізую його з увагою до деталей і гострим оком на дизайн. Створімо щось круте разом.',
                 websitesLabel: 'Портфоліо', websitesTitle: 'Сайти', websitesSubtitle: 'Приклади сайтів-візиток, які я можу створити для вас.',
-                stickersLabel: 'Портфоліо', stickersTitle: 'Стікерпаки', stickersSubtitle: '5 готових паків — безкоштовно для завантаження та використання.',
+                stickersLabel: 'Портфоліо', stickersTitle: 'Стікерпаки', stickersSubtitle: '4 готових паки — безкоштовно для завантаження та використання.',
                 customStickersTitle: 'Хочете індивідуальні стікери?', customStickersDesc: 'Створюю унікальні ілюстровані стікерпаки під ваш бренд, спільноту або настрій.', customStickersBtn: 'Замовити індивідуальний пак',
-                invitationsLabel: 'Портфоліо', invitationsTitle: 'Запрошення', invitationsSubtitle: '5 індивідуальних дизайнів — не продаються, приклади моїх робіт.',
+                invitationsLabel: 'Портфоліо', invitationsTitle: 'Запрошення', invitationsSubtitle: 'Не продаються — приклад моєї індивідуальної роботи.',
                 customInvitationsTitle: 'Потрібен власний дизайн?', customInvitationsDesc: 'Кожне запрошення створюється з нуля. Весілля, дні народження, baby shower — що завгодно.', customInvitationsBtn: 'Замовити індивідуальне запрошення',
-                aiLabel: 'Портфоліо', aiTitle: 'AI-Генерований арт', aiSubtitle: 'Шпалери, аватари та ілюстрації в аніме-стилі — всі створені за допомогою AI.',
+                aiLabel: 'Портфоліо', aiTitle: 'Drikoopler', aiSubtitle: 'AI-генеровані зображення — шпалери, аватари та ілюстрації.',
                 pricingLabel: 'Ціни', pricingTitle: 'Прозорі ціни, без сюрпризів', pricingSubtitle: 'Оплата через Etsy або прямий рахунок.',
                 pricing1Title: 'Сайт — Лише файл', pricing1Item1: 'Повністю зверстаний сайт-візитка', pricing1Item2: 'Адаптивний дизайн', pricing1Item3: 'Доставка ZIP-файлом', pricing1Item4: 'Ви налаштовуєте домен і хостинг', pricing1Item5: '1 правка включена',
                 pricingBadge: 'Найпопулярніше',
                 pricing2Title: 'Сайт — Під ключ', pricing2Item1: 'Все з тарифу "Лише файл"', pricing2Item2: 'Налаштування домену та хостингу', pricing2Item3: 'Повна передача всіх доступів', pricing2Item4: 'SSL-сертифікат налаштовано', pricing2Item5: '2 правки включено',
-                pricing3Title: 'Індивідуальне запрошення', pricing3Item1: 'Унікальний дизайн з нуля', pricing3Item2: 'Цифровий або готовий до друку', pricing3Item3: 'Доставка у високій якості', pricing3Item4: '1 правка включена', pricing3Item5: 'Особисте та комерційне використання',
-                pricing4Title: 'Пак AI фото', pricing4Item1: '10 AI-генерованих зображень', pricing4Item2: 'Аніме-стиль / індивідуальна тема', pricing4Item3: 'Файли високої якості', pricing4Item4: 'Комерційне використання дозволено', pricing4Item5: 'Швидка доставка',
+                pricing3Title: 'Індивідуальний стікерпак', pricing3Item1: '20 унікальних стікерів', pricing3Item2: 'Формат, готовий для Telegram', pricing3Item3: 'Повний пак доставлено', pricing3Item4: '1 правка включена', pricing3Item5: 'Комерційне використання дозволено',
+                pricing4Title: 'Індивідуальне запрошення', pricing4Item1: 'Унікальний дизайн з нуля', pricing4Item2: 'Цифровий або готовий до друку', pricing4Item3: 'Доставка у високій якості', pricing4Item4: '1 правка включена', pricing4Item5: 'Особисте та комерційне використання',
+                pricing5Title: 'Пак AI фото', pricing5Item1: '10 AI-генерованих зображень', pricing5Item2: 'Індивідуальна тема', pricing5Item3: 'Файли високої якості', pricing5Item4: 'Комерційне використання дозволено', pricing5Item5: 'Швидка доставка',
                 orderNow: 'Замовити',
                 contactLabel: 'Контакт', contactTitle: 'Попрацюймо разом', contactSubtitle: 'Заповніть форму, і я звʼяжуся з вами через Telegram.',
                 formName: "Ваше ім'я", formNamePlaceholder: 'Іван Петренко',
@@ -558,9 +591,9 @@
                 formMessage: 'Деталі проєкту', formMessagePlaceholder: 'Розкажіть про ваш проєкт...', formSubmit: 'Надіслати через Telegram',
                 rights: 'Усі права захищено.',
                 toastSuccess: '✅ Заявку надіслано! Я звʼяжуся з вами в Telegram.', toastError: '❌ Будь ласка, заповніть усі обовʼязкові поля.',
-                portfolioTags: 'HTML · CSS · JS', stickerCount: 'Повний пак', portfolioAlert: 'Живе превʼю',
+                portfolioTags: 'HTML · CSS · JS', stickerCount: 'Повний пак', livePreview: 'Живе превʼю',
                 freeStickerPack: 'Безкоштовно',
-                prices: { siteFile: '2 000 ₴', siteTurnkey: '4 000 ₴', invitation: '500 ₴', aiPack: '200 ₴', customSticker: '700 ₴' },
+                prices: { siteFile: '2 000 ₴', siteTurnkey: '4 000 ₴', stickers: '750 ₴', invitation: '500 ₴', aiPack: '200 ₴' },
                 sites: [
                     { name: 'Nailmaster', desc: 'Лендінг салону краси.' },
                     { name: 'Photography', desc: 'Сайт-портфоліо фотографа.' },
@@ -568,20 +601,6 @@
                     { name: 'Coffebara', desc: 'Затишний лендінг кавʼярні.' },
                     { name: 'Fitness', desc: 'Сайт фітнес-тренера.' },
                     { name: 'Вікна Переяслав', desc: 'Лендінг компанії вікон.' }
-                ],
-                stickerPacks: [
-                    { name: 'Стікерпак 1', file: 'IMG_2846.png' },
-                    { name: 'Стікерпак 2', file: 'IMG_2845.png' },
-                    { name: 'Стікерпак 3', file: 'IMG_2844.png' },
-                    { name: 'Стікерпак 4', file: 'IMG_2843.png' },
-                    { name: 'Стікерпак 5', file: 'IMG_2842.png' }
-                ],
-                invitationNames: [
-                    { name: 'Запрошення 1', file: 'IMG_2847.png' },
-                    { name: 'Запрошення 2', file: 'IMG_2853.png' },
-                    { name: 'Запрошення 3', file: 'IMG_2855.png' },
-                    { name: 'Запрошення 4', file: 'IMG_2857.png' },
-                    { name: 'Запрошення 5', file: 'IMG_2850.png' }
                 ]
             }
         };
@@ -606,12 +625,9 @@
             if (serviceSelect) {
                 const opts = serviceSelect.options;
                 opts[0].textContent = t.formServiceDefault;
-                opts[1].textContent = t.formServiceOpt1;
-                opts[2].textContent = t.formServiceOpt2;
-                opts[3].textContent = t.formServiceOpt3;
-                opts[4].textContent = t.formServiceOpt4;
-                opts[5].textContent = t.formServiceOpt5;
-                opts[6].textContent = t.formServiceOpt6;
+                for (let i = 1; i <= 6; i++) {
+                    if (t['formServiceOpt' + i]) opts[i].textContent = t['formServiceOpt' + i];
+                }
             }
             document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.lang === lang));
             localStorage.setItem('preferredLang', lang);
@@ -624,6 +640,7 @@
             const t = translations[currentLang];
             document.getElementById('priceSiteFile').textContent = t.prices.siteFile;
             document.getElementById('priceSiteTurnkey').textContent = t.prices.siteTurnkey;
+            document.getElementById('priceStickers').textContent = t.prices.stickers;
             document.getElementById('priceInvitation').textContent = t.prices.invitation;
             document.getElementById('priceAIPack').textContent = t.prices.aiPack;
         }
@@ -634,7 +651,7 @@
 
         document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-        // ========== MODAL ==========
+        // Modal
         const modalOverlay = document.getElementById('imageModal');
         const modalImage = document.getElementById('modalImage');
         const modalClose = document.getElementById('modalClose');
@@ -652,14 +669,9 @@
         }
 
         modalClose.addEventListener('click', closeModal);
-        modalOverlay.addEventListener('click', function(e) {
-            if (e.target === modalOverlay) closeModal();
-        });
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') closeModal();
-        });
+        modalOverlay.addEventListener('click', e => { if (e.target === modalOverlay) closeModal(); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-        // ========== RENDER ALL DYNAMIC CONTENT ==========
         function renderAllDynamicContent() {
             const t = translations[currentLang];
             const screenshots = siteScreenshots[currentLang];
@@ -681,20 +693,18 @@
                         <h4>${site.name}</h4>
                         <p class="portfolio-tags">${t.portfolioTags}</p>
                         <p class="portfolio-desc">${site.desc}</p>
-                        <a href="${link}" target="_blank" rel="noopener">${t.portfolioAlert} ↗</a>
+                        <a href="${link}" target="_blank" rel="noopener">${t.livePreview} ↗</a>
                     </div>`;
                 websitesGrid.appendChild(card);
-
                 card.querySelector('.portfolio-img').addEventListener('click', function() {
-                    const img = this.dataset.img;
-                    if (img) openModal(img);
+                    if (this.dataset.img) openModal(this.dataset.img);
                 });
             });
 
             // Stickers
             const stickersGrid = document.getElementById('stickersGrid');
             stickersGrid.innerHTML = '';
-            t.stickerPacks.forEach(pack => {
+            stickerPacksData.forEach(pack => {
                 const card = document.createElement('div');
                 card.className = 'sticker-card';
                 card.innerHTML = `
@@ -704,17 +714,15 @@
                     </div>
                     <h3>${pack.name}</h3>
                     <p class="sticker-count">${t.stickerCount}</p>
-                    <span class="free-tag">Free</span>`;
+                    <a href="${pack.link}" target="_blank" rel="noopener" class="sticker-link">Add to Telegram</a>`;
                 stickersGrid.appendChild(card);
-
                 card.querySelector('.sticker-preview').addEventListener('click', function() {
-                    const img = this.dataset.img;
-                    if (img) openModal(img);
+                    if (this.dataset.img) openModal(this.dataset.img);
                 });
             });
 
             // Invitations
-            const invitationData = t.invitationNames;
+            const invitationData = invitationFiles[currentLang];
             const invitationsGrid = document.getElementById('invitationsGrid');
             invitationsGrid.innerHTML = '';
             invitationData.forEach(item => {
@@ -724,23 +732,18 @@
                     <div class="invitation-img" data-img="${item.file}">
                         <img src="${item.file}" alt="${item.name}" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\\'invitation-placeholder\\'>💌<br>${item.name}</div>';">
                     </div>
-                    <div class="invitation-info">
-                        <h4>${item.name}</h4>
-                    </div>`;
+                    <div class="invitation-info"><h4>${item.name}</h4></div>`;
                 invitationsGrid.appendChild(card);
-
                 card.querySelector('.invitation-img').addEventListener('click', function() {
-                    const img = this.dataset.img;
-                    if (img) openModal(img);
+                    if (this.dataset.img) openModal(this.dataset.img);
                 });
             });
         }
 
-        // AI Grid
         function renderAIGrid() {
             const grid = document.getElementById('aiGrid');
             grid.innerHTML = '';
-            aiItems.forEach((item, i) => {
+            aiItems.forEach(item => {
                 const div = document.createElement('div');
                 div.className = 'ai-item';
                 div.textContent = currentLang === 'ua' ? item.nameUA : item.name;
@@ -752,7 +755,6 @@
         renderAllDynamicContent();
         renderAIGrid();
 
-        // Contact form
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const t = translations[currentLang];
