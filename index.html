@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VL Freelance — Code, Pixels & Stickers</title>
+    <title>Drikoopler — Code, Pixels & Stickers</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -78,18 +78,13 @@
         .hero { min-height: 88vh; display: flex; align-items: center; padding: 2rem 0 5rem; }
         .hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
         .hero-tag { display: inline-block; background: var(--surface); border: 1px solid var(--border); padding: 6px 16px; border-radius: 50px; font-size: 0.85rem; font-weight: 500; color: var(--text-secondary); margin-bottom: 1.5rem; }
-        .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 5vw, 4rem); font-weight: 600; line-height: 1.15; margin-bottom: 1.5rem; }
-        .hero-text { font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 2rem; max-width: 480px; }
+        .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 600; line-height: 1.2; margin-bottom: 1rem; }
+        .hero-name { font-size: 1.5rem; font-weight: 700; color: var(--gold); margin-bottom: 1.5rem; }
+        .hero-text { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2rem; max-width: 480px; }
         .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
         .hero-visual { background: linear-gradient(135deg, #1c1917 0%, #292524 100%); border-radius: 24px; padding: 3rem; color: #fff; display: flex; flex-direction: column; gap: 1.2rem; box-shadow: var(--shadow-lg); }
         .hero-visual-item { display: flex; align-items: center; gap: 1rem; font-weight: 500; font-size: 1.05rem; }
         .hero-visual-icon { width: 44px; height: 44px; background: rgba(255,255,255,0.08); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
-
-        /* ---------- ABOUT ---------- */
-        .about-section { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 3rem; display: flex; gap: 3rem; align-items: center; }
-        .about-avatar { width: 120px; height: 120px; background: #e7e5e4; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 3rem; flex-shrink: 0; }
-        .about-content h3 { font-size: 1.6rem; margin-bottom: 0.5rem; }
-        .about-content p { color: var(--text-secondary); max-width: 600px; }
 
         /* ---------- PORTFOLIO GRID ---------- */
         .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.5rem; }
@@ -144,7 +139,7 @@
         .sticker-link:hover { background: var(--accent-hover); }
 
         /* ---------- INVITATIONS ---------- */
-        .invitations-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+        .invitations-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
         .invitation-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: all var(--transition); cursor: pointer; }
         .invitation-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
         .invitation-img { aspect-ratio: 3 / 4; background: #e7e5e4; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
@@ -203,7 +198,6 @@
             .hero-visual { padding: 2rem; }
             .header-inner { flex-wrap: wrap; gap: 0.75rem; }
             .portfolio-grid { grid-template-columns: 1fr; }
-            .about-section { flex-direction: column; text-align: center; padding: 2rem; }
         }
         @media (max-width: 600px) {
             nav { flex-wrap: wrap; gap: 0.75rem; justify-content: center; }
@@ -219,7 +213,7 @@
         <div class="container header-inner">
             <a href="#" class="logo">
                 <span class="logo-placeholder">logo</span>
-                VL Freelance
+                Drikoopler
             </a>
             <nav>
                 <a href="#websites" data-lang-key="navWebsites">Websites</a>
@@ -240,8 +234,9 @@
         <div class="container hero-inner">
             <div class="hero-content">
                 <div class="hero-tag" data-lang-key="heroTag">✦ Available for projects</div>
-                <h1 class="hero-title" data-lang-key="heroTitle">I turn your ideas into <span class="accent-text">code, pixels & stickers</span></h1>
-                <p class="hero-text" data-lang-key="heroText">Full-stack visual freelancer. Business card websites, AI-generated art, Telegram sticker packs, and custom invitations — all from one person who actually gets your vision.</p>
+                <p class="hero-title" data-lang-key="heroTitle">Hi, I'm Dara</p>
+                <p class="hero-name" data-lang-key="heroName">Drikoopler</p>
+                <p class="hero-text" data-lang-key="heroText">I handle your freelance project from start to finish — exactly the way you need it. Websites, stickers, invitations, AI-generated visuals. Whatever your request, I'll make it happen with attention to detail and a sharp eye for design. Let's build something great together.</p>
                 <div class="hero-buttons">
                     <a href="#websites" class="btn btn-primary" data-lang-key="heroBtn1">View portfolio</a>
                     <a href="#pricing" class="btn btn-outline" data-lang-key="heroBtn2">See pricing</a>
@@ -252,20 +247,6 @@
                 <div class="hero-visual-item"><div class="hero-visual-icon">🎨</div><span data-lang-key="heroItem2">Free sticker packs</span></div>
                 <div class="hero-visual-item"><div class="hero-visual-icon">💌</div><span data-lang-key="heroItem3">Custom invitations</span></div>
                 <div class="hero-visual-item"><div class="hero-visual-icon">🤖</div><span data-lang-key="heroItem4">AI-generated art</span></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== ABOUT ME ===== -->
-    <section>
-        <div class="container">
-            <div class="about-section">
-                <div class="about-avatar">👩‍💻</div>
-                <div class="about-content">
-                    <span class="section-label" data-lang-key="aboutLabel">About me</span>
-                    <h3 data-lang-key="aboutTitle">Hi, I'm Dara</h3>
-                    <p data-lang-key="aboutDesc">I handle your freelance project from start to finish — exactly the way you need it. Websites, stickers, invitations, AI-generated visuals. Whatever your request, I'll make it happen with attention to detail and a sharp eye for design. Let's build something great together.</p>
-                </div>
             </div>
         </div>
     </section>
@@ -305,7 +286,7 @@
             <div class="section-header">
                 <span class="section-label" data-lang-key="invitationsLabel">Portfolio</span>
                 <h2 data-lang-key="invitationsTitle">Invitations</h2>
-                <p class="section-subtitle" data-lang-key="invitationsSubtitle">Not for sale — an example of my custom design work.</p>
+                <p class="section-subtitle" data-lang-key="invitationsSubtitle">Not for sale — examples of my custom design work.</p>
             </div>
             <div class="invitations-grid" id="invitationsGrid"></div>
             <div class="custom-section" style="margin-top: 3rem;">
@@ -452,7 +433,7 @@
                 <a href="#aiart" data-lang-key="navAI">AI Art</a>
                 <a href="#contact" data-lang-key="navContact">Contact</a>
             </div>
-            <p class="copyright">© <span id="currentYear"></span> VL Freelance. <span data-lang-key="rights">All rights reserved.</span></p>
+            <p class="copyright">© <span id="currentYear"></span> Drikoopler. <span data-lang-key="rights">All rights reserved.</span></p>
         </div>
     </footer>
 
@@ -495,12 +476,24 @@
             { name: 'Drikoopler Dino', file: 'IMG_2846.png', link: 'https://t.me/addstickers/DrikooplerDino' },
             { name: 'Drikoopler 2', file: 'IMG_2845.png', link: 'https://t.me/addstickers/Drikoopler2' },
             { name: 'Drikoopler', file: 'IMG_2844.png', link: 'https://t.me/addstickers/Drikoopler' },
-            { name: 'Drikoopler YT', file: 'IMG_2843.png', link: 'https://t.me/addstickers/DrikooplerYT' }
+            { name: 'Drikoopler YT', file: 'IMG_2842.png', link: 'https://t.me/addstickers/DrikooplerYT' }
         ];
 
         const invitationFiles = {
-            en: [{ name: 'Invitation', file: 'IMG_2847.png' }],
-            ua: [{ name: 'Запрошення', file: 'IMG_2847.png' }]
+            en: [
+                { name: 'Invitation 1', file: 'IMG_2847.png' },
+                { name: 'Invitation 2', file: 'IMG_2853.png' },
+                { name: 'Invitation 3', file: 'IMG_2855.png' },
+                { name: 'Invitation 4', file: 'IMG_2857.png' },
+                { name: 'Invitation 5', file: 'IMG_2849.png' }
+            ],
+            ua: [
+                { name: 'Запрошення 1', file: 'IMG_2847.png' },
+                { name: 'Запрошення 2', file: 'IMG_2853.png' },
+                { name: 'Запрошення 3', file: 'IMG_2855.png' },
+                { name: 'Запрошення 4', file: 'IMG_2857.png' },
+                { name: 'Запрошення 5', file: 'IMG_2850.png' }
+            ]
         };
 
         const aiItems = [
@@ -520,16 +513,15 @@
             en: {
                 navWebsites: 'Websites', navStickers: 'Stickers', navInvitations: 'Invitations', navAI: 'AI Art', navContact: 'Order',
                 heroTag: '✦ Available for projects',
-                heroTitle: 'I turn your ideas into <span class="accent-text">code, pixels & stickers</span>',
-                heroText: 'Full-stack visual freelancer. Business card websites, AI-generated art, Telegram sticker packs, and custom invitations — all from one person who actually gets your vision.',
+                heroTitle: "Hi, I'm Dara",
+                heroName: 'Drikoopler',
+                heroText: "I handle your freelance project from start to finish — exactly the way you need it. Websites, stickers, invitations, AI-generated visuals. Whatever your request, I'll make it happen with attention to detail and a sharp eye for design. Let's build something great together.",
                 heroBtn1: 'View portfolio', heroBtn2: 'See pricing',
                 heroItem1: 'Business card websites', heroItem2: 'Free sticker packs', heroItem3: 'Custom invitations', heroItem4: 'AI-generated art',
-                aboutLabel: 'About me', aboutTitle: "Hi, I'm Dara",
-                aboutDesc: "I handle your freelance project from start to finish — exactly the way you need it. Websites, stickers, invitations, AI-generated visuals. Whatever your request, I'll make it happen with attention to detail and a sharp eye for design. Let's build something great together.",
                 websitesLabel: 'Portfolio', websitesTitle: 'Websites', websitesSubtitle: 'Examples of business card websites I can create for you.',
                 stickersLabel: 'Portfolio', stickersTitle: 'Sticker Packs', stickersSubtitle: '4 ready-made packs — free to download and use.',
                 customStickersTitle: 'Want custom stickers?', customStickersDesc: 'I create unique illustrated sticker packs tailored to your brand, community, or vibe.', customStickersBtn: 'Order custom pack',
-                invitationsLabel: 'Portfolio', invitationsTitle: 'Invitations', invitationsSubtitle: 'Not for sale — an example of my custom design work.',
+                invitationsLabel: 'Portfolio', invitationsTitle: 'Invitations', invitationsSubtitle: 'Not for sale — examples of my custom design work.',
                 customInvitationsTitle: 'Need your own design?', customInvitationsDesc: 'Every invitation is made from scratch. Weddings, birthdays, baby showers — you name it.', customInvitationsBtn: 'Order custom invitation',
                 aiLabel: 'Portfolio', aiTitle: 'Drikoopler', aiSubtitle: 'AI-generated visuals — wallpapers, avatars, and illustrations.',
                 pricingLabel: 'Pricing', pricingTitle: 'Clear rates, no surprises', pricingSubtitle: 'Payment via Etsy or direct invoice.',
@@ -563,16 +555,15 @@
             ua: {
                 navWebsites: 'Сайти', navStickers: 'Стікери', navInvitations: 'Запрошення', navAI: 'Арти', navContact: 'Замовити',
                 heroTag: '✦ Вільна для проєктів',
-                heroTitle: 'Я перетворюю ваші ідеї на <span class="accent-text">код, пікселі та стікери</span>',
-                heroText: "Full-stack візуальний фрілансер. Сайти-візитки, AI-генерований арт, стікерпаки для Telegram та індивідуальні запрошення — все від однієї людини, яка справді розуміє ваше бачення.",
+                heroTitle: 'Привіт, я Дара',
+                heroName: 'Drikoopler',
+                heroText: 'Я виконую ваш фріланс-проєкт від початку до кінця — саме так, як вам потрібно. Сайти, стікери, запрошення, AI-генеровані зображення. Який би не був ваш запит, я реалізую його з увагою до деталей і гострим оком на дизайн. Створімо щось круте разом.',
                 heroBtn1: 'Переглянути портфоліо', heroBtn2: 'Переглянути ціни',
                 heroItem1: 'Сайти-візитки', heroItem2: 'Безкоштовні стікерпаки', heroItem3: 'Індивідуальні запрошення', heroItem4: 'AI-генерований арт',
-                aboutLabel: 'Про мене', aboutTitle: 'Привіт, я Дара',
-                aboutDesc: 'Я виконую ваш фріланс-проєкт від початку до кінця — саме так, як вам потрібно. Сайти, стікери, запрошення, AI-генеровані зображення. Який би не був ваш запит, я реалізую його з увагою до деталей і гострим оком на дизайн. Створімо щось круте разом.',
                 websitesLabel: 'Портфоліо', websitesTitle: 'Сайти', websitesSubtitle: 'Приклади сайтів-візиток, які я можу створити для вас.',
                 stickersLabel: 'Портфоліо', stickersTitle: 'Стікерпаки', stickersSubtitle: '4 готових паки — безкоштовно для завантаження та використання.',
                 customStickersTitle: 'Хочете індивідуальні стікери?', customStickersDesc: 'Створюю унікальні ілюстровані стікерпаки під ваш бренд, спільноту або настрій.', customStickersBtn: 'Замовити індивідуальний пак',
-                invitationsLabel: 'Портфоліо', invitationsTitle: 'Запрошення', invitationsSubtitle: 'Не продаються — приклад моєї індивідуальної роботи.',
+                invitationsLabel: 'Портфоліо', invitationsTitle: 'Запрошення', invitationsSubtitle: 'Не продаються — приклади моєї індивідуальної роботи.',
                 customInvitationsTitle: 'Потрібен власний дизайн?', customInvitationsDesc: 'Кожне запрошення створюється з нуля. Весілля, дні народження, baby shower — що завгодно.', customInvitationsBtn: 'Замовити індивідуальне запрошення',
                 aiLabel: 'Портфоліо', aiTitle: 'Drikoopler', aiSubtitle: 'AI-генеровані зображення — шпалери, аватари та ілюстрації.',
                 pricingLabel: 'Ціни', pricingTitle: 'Прозорі ціни, без сюрпризів', pricingSubtitle: 'Оплата через Etsy або прямий рахунок.',
@@ -613,7 +604,8 @@
             document.querySelectorAll('[data-lang-key]').forEach(el => {
                 const key = el.dataset.langKey;
                 if (t[key]) {
-                    if (key === 'heroTitle') el.innerHTML = t[key];
+                    if (key === 'heroTitle') el.textContent = t[key];
+                    else if (key === 'heroName') el.textContent = t[key];
                     else el.textContent = t[key];
                 }
             });
@@ -651,7 +643,6 @@
 
         document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-        // Modal
         const modalOverlay = document.getElementById('imageModal');
         const modalImage = document.getElementById('modalImage');
         const modalClose = document.getElementById('modalClose');
@@ -677,7 +668,6 @@
             const screenshots = siteScreenshots[currentLang];
             const links = siteLinks[currentLang];
 
-            // Websites
             const websitesGrid = document.getElementById('websitesGrid');
             websitesGrid.innerHTML = '';
             t.sites.forEach((site, i) => {
@@ -701,7 +691,6 @@
                 });
             });
 
-            // Stickers
             const stickersGrid = document.getElementById('stickersGrid');
             stickersGrid.innerHTML = '';
             stickerPacksData.forEach(pack => {
@@ -721,7 +710,6 @@
                 });
             });
 
-            // Invitations
             const invitationData = invitationFiles[currentLang];
             const invitationsGrid = document.getElementById('invitationsGrid');
             invitationsGrid.innerHTML = '';
