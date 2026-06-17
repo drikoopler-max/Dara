@@ -127,8 +127,10 @@
         .sticker-badge { position: absolute; top: 12px; right: 12px; padding: 4px 12px; border-radius: 50px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
         .badge-free { background: var(--green); color: #fff; }
         .badge-premium { background: var(--gold); color: #fff; }
-        .sticker-preview { display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.25rem; }
-        .sticker-icon { width: 64px; height: 64px; background: #f5f5f4; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2rem; }
+        .sticker-preview { display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.25rem; cursor: pointer; position: relative; }
+        .sticker-preview img { width: 100%; height: 180px; object-fit: contain; border-radius: 8px; transition: transform 0.4s ease; }
+        .sticker-preview:hover img { transform: scale(1.05); }
+        .sticker-preview .sticker-placeholder { width: 100%; height: 180px; background: #f5f5f4; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 3rem; }
         .sticker-card h3 { font-size: 1.1rem; margin-bottom: 0.25rem; }
         .sticker-count { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.75rem; }
         .price-tag { display: inline-block; background: var(--accent); color: #fff; padding: 6px 18px; border-radius: 50px; font-weight: 600; font-size: 0.9rem; margin-top: 0.5rem; }
@@ -138,7 +140,10 @@
         .invitations-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
         .invitation-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: all var(--transition); cursor: pointer; }
         .invitation-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
-        .invitation-img { aspect-ratio: 3 / 4; background: #e7e5e4; display: flex; align-items: center; justify-content: center; color: var(--text-secondary); font-weight: 500; font-size: 0.9rem; text-align: center; padding: 1rem; }
+        .invitation-img { aspect-ratio: 3 / 4; background: #e7e5e4; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+        .invitation-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+        .invitation-card:hover .invitation-img img { transform: scale(1.05); }
+        .invitation-img .invitation-placeholder { color: var(--text-secondary); font-weight: 500; font-size: 0.9rem; text-align: center; padding: 1rem; }
         .invitation-info { padding: 1rem; text-align: center; }
         .invitation-info h4 { font-size: 0.95rem; margin-bottom: 0.25rem; }
 
@@ -436,12 +441,22 @@
     <div class="toast" id="toast"></div>
 
     <script>
-        // ========== SITE SCREENSHOT FILENAMES ==========
+        // ========== FILE NAMES ==========
         const siteScreenshots = {
             en: ['Site.en1.png', 'Site.en2.png', 'Site.en3.png', 'Site.en4.png', 'Site.en5.png', 'Site7.png'],
             ua: ['Site.ua1.png', 'Site.ua2.png', 'Site.ua3.png', 'Site.ua4.png', 'Site.ua5.png', 'Site6.png']
         };
 
+        const stickerFiles = ['IMG_2846.png', 'IMG_2845.png', 'IMG_2844.png'];
+        // Stickers 4-5: IMG_2843.png, IMG_2842.png — reserved for custom/future
+
+        const invitationFiles = {
+            en: ['IMG_2847.png', 'IMG_2853.png', 'IMG_2855.png', 'IMG_2857.png', 'IMG_2849.png'],
+            ua: ['IMG_2847.png', 'IMG_2853.png', 'IMG_2855.png', 'IMG_2857.png', 'IMG_2850.png']
+        };
+        // IMG_2849.png = EN version, IMG_2850.png = UA version — used as 5th item
+
+        // ========== TRANSLATIONS ==========
         const translations = {
             en: {
                 navPortfolio: 'Portfolio', navStickers: 'Stickers', navPricing: 'Pricing', navContact: 'Get in touch',
@@ -485,11 +500,17 @@
                     { name: 'Business Site 6', desc: 'Creative agency vibe.' }
                 ],
                 stickerPacks: [
-                    { name: 'Cute Animals', count: '12 stickers', free: true },
-                    { name: 'Reaction Pack', count: '10 stickers', free: true },
-                    { name: 'Anime Moods', count: '14 stickers', free: true }
+                    { name: 'Sticker Pack 1', count: 'Full pack', file: 'IMG_2846.png' },
+                    { name: 'Sticker Pack 2', count: 'Full pack', file: 'IMG_2845.png' },
+                    { name: 'Sticker Pack 3', count: 'Full pack', file: 'IMG_2844.png' }
                 ],
-                invitationNames: ['Wedding — Golden Elegance', 'Birthday — Neon Party', 'Baby Shower — Soft Clouds', 'Graduation — Bold & Modern', 'Christmas Dinner']
+                invitationNames: [
+                    { name: 'Invitation 1', file: 'IMG_2847.png' },
+                    { name: 'Invitation 2', file: 'IMG_2853.png' },
+                    { name: 'Invitation 3', file: 'IMG_2855.png' },
+                    { name: 'Invitation 4', file: 'IMG_2857.png' },
+                    { name: 'Invitation 5', file: 'IMG_2849.png' }
+                ]
             },
             ua: {
                 navPortfolio: 'Портфоліо', navStickers: 'Стікери', navPricing: 'Ціни', navContact: "Зв'язатися",
@@ -533,11 +554,17 @@
                     { name: 'Сайт-візитка 6', desc: 'Креативне агентство.' }
                 ],
                 stickerPacks: [
-                    { name: 'Милі тварини', count: '12 стікерів', free: true },
-                    { name: 'Реакції', count: '10 стікерів', free: true },
-                    { name: 'Аніме настрій', count: '14 стікерів', free: true }
+                    { name: 'Стікерпак 1', count: 'Повний пак', file: 'IMG_2846.png' },
+                    { name: 'Стікерпак 2', count: 'Повний пак', file: 'IMG_2845.png' },
+                    { name: 'Стікерпак 3', count: 'Повний пак', file: 'IMG_2844.png' }
                 ],
-                invitationNames: ['Весілля — Золота елегантність', 'День народження — Неонова вечірка', 'Baby Shower — Ніжні хмаринки', 'Випускний — Сміливий і сучасний', 'Різдвяна вечеря']
+                invitationNames: [
+                    { name: 'Запрошення 1', file: 'IMG_2847.png' },
+                    { name: 'Запрошення 2', file: 'IMG_2853.png' },
+                    { name: 'Запрошення 3', file: 'IMG_2855.png' },
+                    { name: 'Запрошення 4', file: 'IMG_2857.png' },
+                    { name: 'Запрошення 5', file: 'IMG_2850.png' }
+                ]
             }
         };
 
@@ -640,36 +667,55 @@
                     </div>`;
                 portfolioGrid.appendChild(card);
 
-                // Click handler for image
                 card.querySelector('.portfolio-img').addEventListener('click', function() {
                     const img = this.dataset.img;
                     if (img) openModal(img);
                 });
             });
 
-            // Stickers
+            // Stickers — with real images
             const stickersGrid = document.getElementById('stickersGrid');
             stickersGrid.innerHTML = '';
             t.stickerPacks.forEach(pack => {
                 const card = document.createElement('div');
                 card.className = 'sticker-card';
                 card.innerHTML = `
-                    <span class="sticker-badge ${pack.free ? 'badge-free' : 'badge-premium'}">${pack.free ? t.freeStickerPack : t.customStickerPack}</span>
-                    <div class="sticker-preview"><div class="sticker-icon">🐱</div><div class="sticker-icon">🐶</div><div class="sticker-icon">🐰</div></div>
-                    <h3>${pack.name}</h3><p class="sticker-count">${pack.count}</p>
-                    ${pack.free ? '<span class="free-tag">Free</span>' : `<span class="price-tag">${t.prices.customSticker}</span>`}`;
+                    <span class="sticker-badge badge-free">${t.freeStickerPack}</span>
+                    <div class="sticker-preview" data-img="${pack.file}">
+                        <img src="${pack.file}" alt="${pack.name}" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\\'sticker-placeholder\\'>🎨</div>';">
+                    </div>
+                    <h3>${pack.name}</h3>
+                    <p class="sticker-count">${pack.count}</p>
+                    <span class="free-tag">Free</span>`;
                 stickersGrid.appendChild(card);
+
+                card.querySelector('.sticker-preview').addEventListener('click', function() {
+                    const img = this.dataset.img;
+                    if (img) openModal(img);
+                });
             });
 
-            // Invitations
+            // Invitations — with real images, language-specific
+            const invitationData = t.invitationNames;
             const invitationsGrid = document.getElementById('invitationsGrid');
             invitationsGrid.innerHTML = '';
-            t.invitationNames.forEach(name => {
+            invitationData.forEach(item => {
                 const card = document.createElement('div');
                 card.className = 'invitation-card';
-                card.innerHTML = `<div class="invitation-img">💌<br>${name}</div><div class="invitation-info"><h4>${name}</h4><span class="price-tag" style="font-size:0.8rem;">${t.prices.invitation}</span></div>`;
-                card.addEventListener('click', () => alert(`${currentLang === 'en' ? 'Full preview:' : 'Повний перегляд:'} ${name}`));
+                card.innerHTML = `
+                    <div class="invitation-img" data-img="${item.file}">
+                        <img src="${item.file}" alt="${item.name}" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\\'invitation-placeholder\\'>💌<br>${item.name}</div>';">
+                    </div>
+                    <div class="invitation-info">
+                        <h4>${item.name}</h4>
+                        <span class="price-tag" style="font-size:0.8rem;">${t.prices.invitation}</span>
+                    </div>`;
                 invitationsGrid.appendChild(card);
+
+                card.querySelector('.invitation-img').addEventListener('click', function() {
+                    const img = this.dataset.img;
+                    if (img) openModal(img);
+                });
             });
         }
 
