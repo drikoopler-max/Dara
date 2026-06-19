@@ -105,27 +105,6 @@
         .portfolio-info a { color: var(--gold); font-weight: 600; text-decoration: none; font-size: 0.85rem; }
         .portfolio-info a:hover { text-decoration: underline; }
 
-        /* ---------- MODAL ---------- */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85); z-index: 999;
-            display: flex; align-items: center; justify-content: center;
-            opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
-        }
-        .modal-overlay.active { opacity: 1; pointer-events: all; }
-        .modal-content { position: relative; max-width: 90vw; max-height: 90vh; }
-        .modal-content img { max-width: 90vw; max-height: 85vh; border-radius: 8px; box-shadow: 0 8px 40px rgba(0,0,0,0.5); }
-        .modal-close {
-            position: absolute; top: -16px; right: -16px;
-            width: 40px; height: 40px; background: #fff; border: none;
-            border-radius: 50%; font-size: 1.3rem; cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
-            color: var(--accent); font-weight: 700; box-shadow: var(--shadow-lg);
-            transition: all var(--transition); z-index: 1000;
-        }
-        .modal-close:hover { background: #e7e5e4; transform: scale(1.1); }
-        body.modal-open { overflow: hidden; }
-
         /* ---------- STICKER CARDS ---------- */
         .stickers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
         .sticker-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; text-align: center; transition: all var(--transition); position: relative; }
@@ -152,29 +131,55 @@
         .invitation-info { padding: 0.75rem; text-align: center; }
         .invitation-info h4 { font-size: 0.9rem; }
 
-        /* ---------- AI CAROUSEL ---------- */
-        .carousel-container { position: relative; max-width: 100%; overflow: hidden; }
-        .carousel-track { display: flex; transition: transform 0.5s ease-in-out; }
-        .carousel-slide { min-width: 100%; display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 0.75rem; padding: 0.5rem 0; }
-        .ai-item { aspect-ratio: 1; background: #e7e5e4; border-radius: var(--radius); overflow: hidden; cursor: pointer; transition: all var(--transition); }
-        .ai-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
-        .ai-item:hover img { transform: scale(1.08); }
-        .ai-item:hover { box-shadow: var(--shadow-lg); }
-        .ai-item .ai-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: var(--text-secondary); font-weight: 500; font-size: 0.75rem; text-align: center; padding: 0.5rem; }
-        .carousel-btn {
-            position: absolute; top: 50%; transform: translateY(-50%);
-            width: 40px; height: 40px; background: var(--surface); border: 1px solid var(--border);
-            border-radius: 50%; font-size: 1.2rem; cursor: pointer; z-index: 10;
+        /* ---------- AI PACKS GRID ---------- */
+        .ai-packs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.25rem; }
+        .ai-pack-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; cursor: pointer; transition: all var(--transition); }
+        .ai-pack-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); border-color: var(--accent); }
+        .ai-pack-cover { width: 100%; height: 200px; background: #e7e5e4; position: relative; overflow: hidden; }
+        .ai-pack-cover img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+        .ai-pack-card:hover .ai-pack-cover img { transform: scale(1.05); }
+        .ai-pack-cover .cover-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: var(--text-secondary); }
+        .ai-pack-info { padding: 1.25rem; text-align: center; }
+        .ai-pack-info h3 { font-size: 1.05rem; margin-bottom: 0.25rem; }
+        .ai-pack-info .pack-count { font-size: 0.8rem; color: var(--text-secondary); }
+
+        /* ---------- FULLSCREEN CAROUSEL MODAL ---------- */
+        .carousel-fullscreen {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.92); z-index: 1000;
             display: flex; align-items: center; justify-content: center;
-            color: var(--accent); font-weight: 700; box-shadow: var(--shadow);
-            transition: all var(--transition);
+            opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
         }
-        .carousel-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
-        .carousel-btn.prev { left: -12px; }
-        .carousel-btn.next { right: -12px; }
-        .carousel-dots { display: flex; gap: 8px; justify-content: center; margin-top: 1rem; }
-        .carousel-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--border); cursor: pointer; transition: all var(--transition); border: none; }
-        .carousel-dot.active { background: var(--accent); width: 28px; border-radius: 10px; }
+        .carousel-fullscreen.active { opacity: 1; pointer-events: all; }
+        .carousel-fullscreen .carousel-close {
+            position: absolute; top: 20px; right: 20px;
+            width: 44px; height: 44px; background: #fff; border: none;
+            border-radius: 50%; font-size: 1.4rem; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--accent); font-weight: 700; z-index: 1010;
+            box-shadow: var(--shadow-lg); transition: all var(--transition);
+        }
+        .carousel-fullscreen .carousel-close:hover { background: #e7e5e4; transform: scale(1.1); }
+        .carousel-fullscreen .fs-track-container { width: 100%; max-width: 900px; overflow: hidden; position: relative; }
+        .carousel-fullscreen .fs-track { display: flex; transition: transform 0.5s ease-in-out; }
+        .carousel-fullscreen .fs-slide { min-width: 100%; display: flex; align-items: center; justify-content: center; padding: 2rem; }
+        .carousel-fullscreen .fs-slide img { max-width: 100%; max-height: 80vh; object-fit: contain; border-radius: 8px; box-shadow: 0 4px 30px rgba(0,0,0,0.4); }
+        .carousel-fullscreen .fs-btn {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            width: 48px; height: 48px; background: rgba(255,255,255,0.9); border: none;
+            border-radius: 50%; font-size: 1.5rem; cursor: pointer; z-index: 1005;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--accent); font-weight: 700; transition: all var(--transition);
+        }
+        .carousel-fullscreen .fs-btn:hover { background: #fff; box-shadow: var(--shadow-lg); }
+        .carousel-fullscreen .fs-btn.prev { left: 10px; }
+        .carousel-fullscreen .fs-btn.next { right: 10px; }
+        .carousel-fullscreen .fs-counter {
+            position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+            background: rgba(255,255,255,0.9); padding: 6px 16px; border-radius: 50px;
+            font-weight: 600; font-size: 0.85rem; color: var(--accent);
+        }
+        body.fs-open { overflow: hidden; }
 
         /* ---------- CUSTOM SECTION ---------- */
         .custom-section { background: var(--surface); border: 2px dashed var(--border); border-radius: var(--radius); padding: 2rem; text-align: center; }
@@ -231,14 +236,13 @@
             .hero-visual { padding: 2rem; }
             .header-inner { flex-wrap: wrap; gap: 0.5rem; }
             .portfolio-grid { grid-template-columns: 1fr; }
-            .carousel-btn.prev { left: 0; }
-            .carousel-btn.next { right: 0; }
+            .carousel-fullscreen .fs-btn.prev { left: 5px; }
+            .carousel-fullscreen .fs-btn.next { right: 5px; }
         }
         @media (max-width: 600px) {
             nav { flex-wrap: wrap; gap: 0.5rem; justify-content: center; font-size: 0.8rem; }
             .pricing-grid { grid-template-columns: 1fr; }
             .contact-wrapper { padding: 1.5rem; }
-            .carousel-slide { grid-template-columns: repeat(2, 1fr); }
             
             .portfolio-img { height: 250px; }
             .portfolio-img img { object-fit: contain; object-position: center; background: #f5f5f4; }
@@ -251,6 +255,12 @@
             
             .invitations-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
             .invitation-info h4 { font-size: 0.8rem; }
+            
+            .ai-packs-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+            .ai-pack-cover { height: 140px; }
+            .ai-pack-info h3 { font-size: 0.9rem; }
+            
+            .carousel-fullscreen .fs-btn { width: 36px; height: 36px; font-size: 1.1rem; }
         }
     </style>
 </head>
@@ -352,14 +362,9 @@
             <div class="section-header">
                 <span class="section-label" data-lang-key="aiLabel">Portfolio</span>
                 <h2 data-lang-key="aiTitle">Drikoopler</h2>
-                <p class="section-subtitle" data-lang-key="aiSubtitle">AI-generated visuals — wallpapers, avatars, and illustrations.</p>
+                <p class="section-subtitle" data-lang-key="aiSubtitle">AI-generated visuals — wallpapers, avatars, and illustrations. Click a pack to view.</p>
             </div>
-            <div class="carousel-container" id="aiCarousel">
-                <button class="carousel-btn prev" id="carouselPrev">‹</button>
-                <button class="carousel-btn next" id="carouselNext">›</button>
-                <div class="carousel-track" id="carouselTrack"></div>
-                <div class="carousel-dots" id="carouselDots"></div>
-            </div>
+            <div class="ai-packs-grid" id="aiPacksGrid"></div>
         </div>
     </section>
 
@@ -499,7 +504,18 @@
         </div>
     </footer>
 
-    <!-- ===== MODAL ===== -->
+    <!-- ===== FULLSCREEN CAROUSEL MODAL ===== -->
+    <div class="carousel-fullscreen" id="fsCarousel">
+        <button class="carousel-close" id="fsClose">✕</button>
+        <button class="fs-btn prev" id="fsPrev">‹</button>
+        <button class="fs-btn next" id="fsNext">›</button>
+        <div class="fs-track-container">
+            <div class="fs-track" id="fsTrack"></div>
+        </div>
+        <div class="fs-counter" id="fsCounter">1 / 1</div>
+    </div>
+
+    <!-- ===== IMAGE MODAL ===== -->
     <div class="modal-overlay" id="imageModal">
         <div class="modal-content">
             <button class="modal-close" id="modalClose">✕</button>
@@ -556,52 +572,68 @@
             ]
         };
 
-        // AI slides with real filenames
-        const aiSlides = [
-            // Slide 1 — Alucard (6 photos)
-            [
-                'Default_Alucard_is_the_main_character_of_the_anime_and_manga_H_2 2.jpg',
-                'Default_Alucard_is_the_main_character_of_the_anime_and_manga_H_3.jpg',
-                'Default_Alucard_is_the_main_character_of_the_anime_and_manga_H_1.jpg',
-                'Default_Alucard_is_the_main_character_of_the_anime_and_manga_H_0.jpg',
-                'Default_Alucard_from_Hellsing_Detailed_Description_for_Image_2.jpg',
-                'Default_Alucard_is_the_main_character_of_the_anime_and_manga_H_2.jpg'
-            ],
-            // Slide 2 — Lylia avatars (4 photos)
-            [
-                'Anime_Lylia_a_popular_hero_from_Mobile_Legends_Bang_Bang_is_de_0 2.jpg',
-                'Anime_Lylia_a_popular_hero_from_Mobile_Legends_Bang_Bang_is_de_1.jpg',
-                'Anime_Lylia_a_popular_hero_from_Mobile_Legends_Bang_Bang_is_de_0.jpg',
-                'Default_Lylia_a_popular_hero_from_Mobile_Legends_Bang_Bang_is_0 2.jpg'
-            ],
-            // Slide 3 — Terraria characters (7 photos)
-            [
-                'Leonardo_Phoenix_10_The_logo_features_a_female_Terraria_charac_2 2.jpg',
-                'Leonardo_Phoenix_10_The_logo_features_a_female_Terraria_charac_2.jpg',
-                'Leonardo_Phoenix_10_The_logo_features_a_female_Terraria_charac_0.jpg',
-                'Leonardo_Phoenix_10_The_logo_features_a_female_Terraria_charac_3 2.jpg',
-                'Leonardo_Phoenix_10_The_logo_features_a_female_Terraria_charac_1.jpg',
-                'Leonardo_Phoenix_10_The_logo_features_a_female_Terraria_charac_3.jpg',
-                'Leonardo_Phoenix_10_The_logo_features_a_female_Terraria_charac_1 2.jpg'
-            ],
-            // Slide 4 — Fantasy renders (15 photos)
-            [
-                'Leonardo_Phoenix_a_lush_3d_render_of_a_single_majestic_dragon_2.jpg',
-                'Leonardo_Phoenix_a_lush_3d_render_of_The_images_depict_a_wyver_1.jpg',
-                'Leonardo_Phoenix_a_lush_3d_render_of_A_single_regal_and_fantas_3.jpg',
-                'Leonardo_Phoenix_a_lush_3d_render_of_a_majestic_pegasus_crowne_0.jpg',
-                'Leonardo_Phoenix_a_lush_3d_render_of_A_regal_fantasythemed_tig_1.jpg',
-                'Leonardo_Phoenix_a_lush_3d_render_of_The_image_depicts_a_dark_3.jpg',
-                'Leonardo_Phoenix_a_lush_3d_render_of_A_majestic_crowned_phoeni_2.jpg',
-                'Leonardo_Phoenix_a_lush_3d_render_of_a_single_majestic_honey_b_1.jpg',
-                'Leonardo_Phoenix_a_lush_3d_render_of_The_image_depicts_a_dark_1.jpg',
-                'Leonardo_Phoenix_a_lush_3d_render_of_The_image_depicts_a_regal_1.jpg',
-                'Leonardo_Phoenix_a_lush_3d_render_of_a_single_majestic_dog_cro_2.jpg',
-                'Leonardo_Phoenix_a_lush_3d_render_of_A_majestic_crowned_phoeni_3.jpg',
-                'Leonardo_Phoenix_a_lush_3d_render_of_a_regal_and_fantasythemed_2.jpg',
-                'Leonardo_Phoenix_a_lush_3d_render_of_a_single_dark_regal_and_f_0.jpg',
-                'Leonardo_Phoenix_exquisite_macro_photography_closeup_of_a_sing_1.jpg'
-            ]
+        // AI packs data
+        const aiPacks = [
+            {
+                name: 'Alucard',
+                nameUA: 'Алукард',
+                cover: 'Default_Alucard_is_the_main_character_of_the_anime_and_manga_H_2 2.jpg',
+                files: [
+                    'Default_Alucard_is_the_main_character_of_the_anime_and_manga_H_2 2.jpg',
+                    'Default_Alucard_is_the_main_character_of_the_anime_and_manga_H_3.jpg',
+                    'Default_Alucard_is_the_main_character_of_the_anime_and_manga_H_1.jpg',
+                    'Default_Alucard_is_the_main_character_of_the_anime_and_manga_H_0.jpg',
+                    'Default_Alucard_from_Hellsing_Detailed_Description_for_Image_2.jpg',
+                    'Default_Alucard_is_the_main_character_of_the_anime_and_manga_H_2.jpg'
+                ]
+            },
+            {
+                name: 'Lylia Avatars',
+                nameUA: 'Аватари Lylia',
+                cover: 'Anime_Lylia_a_popular_hero_from_Mobile_Legends_Bang_Bang_is_de_0 2.jpg',
+                files: [
+                    'Anime_Lylia_a_popular_hero_from_Mobile_Legends_Bang_Bang_is_de_0 2.jpg',
+                    'Anime_Lylia_a_popular_hero_from_Mobile_Legends_Bang_Bang_is_de_1.jpg',
+                    'Anime_Lylia_a_popular_hero_from_Mobile_Legends_Bang_Bang_is_de_0.jpg',
+                    'Default_Lylia_a_popular_hero_from_Mobile_Legends_Bang_Bang_is_0 2.jpg'
+                ]
+            },
+            {
+                name: 'Terraria',
+                nameUA: 'Terraria',
+                cover: 'Leonardo_Phoenix_10_The_logo_features_a_female_Terraria_charac_2 2.jpg',
+                files: [
+                    'Leonardo_Phoenix_10_The_logo_features_a_female_Terraria_charac_2 2.jpg',
+                    'Leonardo_Phoenix_10_The_logo_features_a_female_Terraria_charac_2.jpg',
+                    'Leonardo_Phoenix_10_The_logo_features_a_female_Terraria_charac_0.jpg',
+                    'Leonardo_Phoenix_10_The_logo_features_a_female_Terraria_charac_3 2.jpg',
+                    'Leonardo_Phoenix_10_The_logo_features_a_female_Terraria_charac_1.jpg',
+                    'Leonardo_Phoenix_10_The_logo_features_a_female_Terraria_charac_3.jpg',
+                    'Leonardo_Phoenix_10_The_logo_features_a_female_Terraria_charac_1 2.jpg'
+                ]
+            },
+            {
+                name: 'Fantasy Renders',
+                nameUA: 'Фентезі рендери',
+                cover: 'Leonardo_Phoenix_a_lush_3d_render_of_a_single_majestic_dragon_2.jpg',
+                files: [
+                    'Leonardo_Phoenix_a_lush_3d_render_of_a_single_majestic_dragon_2.jpg',
+                    'Leonardo_Phoenix_a_lush_3d_render_of_The_images_depict_a_wyver_1.jpg',
+                    'Leonardo_Phoenix_a_lush_3d_render_of_A_single_regal_and_fantas_3.jpg',
+                    'Leonardo_Phoenix_a_lush_3d_render_of_a_majestic_pegasus_crowne_0.jpg',
+                    'Leonardo_Phoenix_a_lush_3d_render_of_A_regal_fantasythemed_tig_1.jpg',
+                    'Leonardo_Phoenix_a_lush_3d_render_of_The_image_depicts_a_dark_3.jpg',
+                    'Leonardo_Phoenix_a_lush_3d_render_of_A_majestic_crowned_phoeni_2.jpg',
+                    'Leonardo_Phoenix_a_lush_3d_render_of_a_single_majestic_honey_b_1.jpg',
+                    'Leonardo_Phoenix_a_lush_3d_render_of_The_image_depicts_a_dark_1.jpg',
+                    'Leonardo_Phoenix_a_lush_3d_render_of_The_image_depicts_a_regal_1.jpg',
+                    'Leonardo_Phoenix_a_lush_3d_render_of_a_single_majestic_dog_cro_2.jpg',
+                    'Leonardo_Phoenix_a_lush_3d_render_of_A_majestic_crowned_phoeni_3.jpg',
+                    'Leonardo_Phoenix_a_lush_3d_render_of_a_regal_and_fantasythemed_2.jpg',
+                    'Leonardo_Phoenix_a_lush_3d_render_of_a_single_dark_regal_and_f_0.jpg',
+                    'Leonardo_Phoenix_exquisite_macro_photography_closeup_of_a_sing_1.jpg'
+                ]
+            }
         ];
 
         const translations = {
@@ -616,7 +648,7 @@
                 customStickersTitle: 'Want custom stickers?', customStickersDesc: 'I create unique illustrated sticker packs tailored to your brand, community, or vibe.', customStickersBtn: 'Order custom pack',
                 invitationsLabel: 'Portfolio', invitationsTitle: 'Invitations', invitationsSubtitle: 'Not for sale — examples of my custom design work.',
                 customInvitationsTitle: 'Need your own design?', customInvitationsDesc: 'Every invitation is made from scratch. Weddings, birthdays, baby showers — you name it.', customInvitationsBtn: 'Order custom invitation',
-                aiLabel: 'Portfolio', aiTitle: 'Drikoopler', aiSubtitle: 'AI-generated visuals — wallpapers, avatars, and illustrations.',
+                aiLabel: 'Portfolio', aiTitle: 'Drikoopler', aiSubtitle: 'AI-generated visuals — wallpapers, avatars, and illustrations. Click a pack to view.',
                 pricingLabel: 'Pricing', pricingTitle: 'Clear rates, no surprises', pricingSubtitle: 'Payment via Etsy or direct invoice.',
                 pricing1Title: 'Website — File Only', pricing1Item1: 'Fully coded business card site', pricing1Item2: 'Responsive design', pricing1Item3: 'Delivered as ZIP file', pricing1Item4: 'You set up domain & hosting', pricing1Item5: '1 revision included',
                 pricingBadge: 'Most popular',
@@ -634,7 +666,7 @@
                 rights: 'All rights reserved.',
                 toastSuccess: '✅ Request sent! I will contact you on Telegram soon.', toastError: '❌ Please fill all required fields.',
                 portfolioTags: 'HTML · CSS · JS', stickerCount: 'Full pack', livePreview: 'Live preview',
-                freeStickerPack: 'Free',
+                freeStickerPack: 'Free', packPhotos: 'photos',
                 prices: { siteFile: '$50', siteTurnkey: '$100', stickers: '$15', invitation: '$10', aiPack: '$5' },
                 sites: [
                     { name: 'Nailmaster', desc: 'Beauty salon landing page.' },
@@ -656,7 +688,7 @@
                 customStickersTitle: 'Хочете індивідуальні стікери?', customStickersDesc: 'Створюю унікальні ілюстровані стікерпаки під ваш бренд, спільноту або настрій.', customStickersBtn: 'Замовити індивідуальний пак',
                 invitationsLabel: 'Портфоліо', invitationsTitle: 'Запрошення', invitationsSubtitle: 'Не продаються — приклади моєї індивідуальної роботи.',
                 customInvitationsTitle: 'Потрібен власний дизайн?', customInvitationsDesc: 'Кожне запрошення створюється з нуля. Весілля, дні народження, baby shower — що завгодно.', customInvitationsBtn: 'Замовити індивідуальне запрошення',
-                aiLabel: 'Портфоліо', aiTitle: 'Drikoopler', aiSubtitle: 'AI-генеровані зображення — шпалери, аватари та ілюстрації.',
+                aiLabel: 'Портфоліо', aiTitle: 'Drikoopler', aiSubtitle: 'AI-генеровані зображення — шпалери, аватари та ілюстрації. Натисніть на пак для перегляду.',
                 pricingLabel: 'Ціни', pricingTitle: 'Прозорі ціни, без сюрпризів', pricingSubtitle: 'Оплата через Etsy або прямий рахунок.',
                 pricing1Title: 'Сайт — Лише файл', pricing1Item1: 'Повністю зверстаний сайт-візитка', pricing1Item2: 'Адаптивний дизайн', pricing1Item3: 'Доставка ZIP-файлом', pricing1Item4: 'Ви налаштовуєте домен і хостинг', pricing1Item5: '1 правка включена',
                 pricingBadge: 'Найпопулярніше',
@@ -674,7 +706,7 @@
                 rights: 'Усі права захищено.',
                 toastSuccess: '✅ Заявку надіслано! Я звʼяжуся з вами в Telegram.', toastError: '❌ Будь ласка, заповніть усі обовʼязкові поля.',
                 portfolioTags: 'HTML · CSS · JS', stickerCount: 'Повний пак', livePreview: 'Живе превʼю',
-                freeStickerPack: 'Безкоштовно',
+                freeStickerPack: 'Безкоштовно', packPhotos: 'фото',
                 prices: { siteFile: '2 000 ₴', siteTurnkey: '4 000 ₴', stickers: '750 ₴', invitation: '500 ₴', aiPack: '200 ₴' },
                 sites: [
                     { name: 'Nailmaster', desc: 'Лендінг салону краси.' },
@@ -712,7 +744,6 @@
             localStorage.setItem('preferredLang', lang);
             updatePrices();
             renderAllDynamicContent();
-            renderAICarousel();
         }
 
         function updatePrices() {
@@ -730,7 +761,7 @@
 
         document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-        // Modal
+        // Image modal
         const modalOverlay = document.getElementById('imageModal');
         const modalImage = document.getElementById('modalImage');
         const modalClose = document.getElementById('modalClose');
@@ -747,13 +778,90 @@
         }
         modalClose.addEventListener('click', closeModal);
         modalOverlay.addEventListener('click', e => { if (e.target === modalOverlay) closeModal(); });
-        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape' && !document.body.classList.contains('fs-open')) closeModal(); });
+
+        // Fullscreen carousel
+        const fsCarousel = document.getElementById('fsCarousel');
+        const fsTrack = document.getElementById('fsTrack');
+        const fsClose = document.getElementById('fsClose');
+        const fsPrev = document.getElementById('fsPrev');
+        const fsNext = document.getElementById('fsNext');
+        const fsCounter = document.getElementById('fsCounter');
+        let fsCurrentSlide = 0;
+        let fsCurrentPack = null;
+
+        function openFsCarousel(packIndex) {
+            fsCurrentPack = packIndex;
+            fsCurrentSlide = 0;
+            const pack = aiPacks[packIndex];
+            fsTrack.innerHTML = '';
+            pack.files.forEach(file => {
+                const slide = document.createElement('div');
+                slide.className = 'fs-slide';
+                slide.innerHTML = `<img src="${file}" alt="AI art">`;
+                fsTrack.appendChild(slide);
+            });
+            updateFsCarousel();
+            fsCarousel.classList.add('active');
+            document.body.classList.add('fs-open');
+        }
+
+        function closeFsCarousel() {
+            fsCarousel.classList.remove('active');
+            document.body.classList.remove('fs-open');
+            fsCurrentPack = null;
+        }
+
+        function updateFsCarousel() {
+            fsTrack.style.transform = `translateX(-${fsCurrentSlide * 100}%)`;
+            const total = aiPacks[fsCurrentPack].files.length;
+            fsCounter.textContent = `${fsCurrentSlide + 1} / ${total}`;
+        }
+
+        function fsNextSlide() {
+            if (fsCurrentPack === null) return;
+            const total = aiPacks[fsCurrentPack].files.length;
+            fsCurrentSlide = (fsCurrentSlide + 1) % total;
+            updateFsCarousel();
+        }
+
+        function fsPrevSlide() {
+            if (fsCurrentPack === null) return;
+            const total = aiPacks[fsCurrentPack].files.length;
+            fsCurrentSlide = (fsCurrentSlide - 1 + total) % total;
+            updateFsCarousel();
+        }
+
+        fsClose.addEventListener('click', closeFsCarousel);
+        fsNext.addEventListener('click', fsNextSlide);
+        fsPrev.addEventListener('click', fsPrevSlide);
+
+        fsCarousel.addEventListener('click', function(e) {
+            if (e.target === fsCarousel) closeFsCarousel();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (!document.body.classList.contains('fs-open')) return;
+            if (e.key === 'Escape') closeFsCarousel();
+            if (e.key === 'ArrowRight') fsNextSlide();
+            if (e.key === 'ArrowLeft') fsPrevSlide();
+        });
+
+        // Touch swipe for fullscreen carousel
+        let fsTouchStartX = 0;
+        fsCarousel.addEventListener('touchstart', e => { fsTouchStartX = e.changedTouches[0].screenX; });
+        fsCarousel.addEventListener('touchend', e => {
+            const diff = fsTouchStartX - e.changedTouches[0].screenX;
+            if (diff > 50) fsNextSlide();
+            if (diff < -50) fsPrevSlide();
+        });
 
         function renderAllDynamicContent() {
             const t = translations[currentLang];
             const screenshots = siteScreenshots[currentLang];
             const links = siteLinks[currentLang];
 
+            // Websites
             const websitesGrid = document.getElementById('websitesGrid');
             websitesGrid.innerHTML = '';
             t.sites.forEach((site, i) => {
@@ -777,6 +885,7 @@
                 });
             });
 
+            // Stickers
             const stickersGrid = document.getElementById('stickersGrid');
             stickersGrid.innerHTML = '';
             stickerPacksData.forEach(pack => {
@@ -796,6 +905,7 @@
                 });
             });
 
+            // Invitations
             const invitationData = invitationFiles[currentLang];
             const invitationsGrid = document.getElementById('invitationsGrid');
             invitationsGrid.innerHTML = '';
@@ -812,79 +922,28 @@
                     if (this.dataset.img) openModal(this.dataset.img);
                 });
             });
-        }
 
-        // AI Carousel
-        let currentSlide = 0;
-        let carouselInterval;
-        const totalSlides = 4;
-
-        function renderAICarousel() {
-            const track = document.getElementById('carouselTrack');
-            const dots = document.getElementById('carouselDots');
-            track.innerHTML = '';
-            dots.innerHTML = '';
-
-            aiSlides.forEach((slide, slideIndex) => {
-                const slideDiv = document.createElement('div');
-                slideDiv.className = 'carousel-slide';
-                slide.forEach(filename => {
-                    const div = document.createElement('div');
-                    div.className = 'ai-item';
-                    div.innerHTML = `<img src="${filename}" alt="AI art" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\\'ai-placeholder\\'>🖼</div>';" loading="lazy">`;
-                    div.addEventListener('click', () => openModal(filename));
-                    slideDiv.appendChild(div);
-                });
-                track.appendChild(slideDiv);
-
-                const dot = document.createElement('button');
-                dot.className = 'carousel-dot' + (slideIndex === 0 ? ' active' : '');
-                dot.addEventListener('click', () => goToSlide(slideIndex));
-                dots.appendChild(dot);
-            });
-
-            updateCarousel();
-        }
-
-        function updateCarousel() {
-            const track = document.getElementById('carouselTrack');
-            track.style.transform = `translateX(-${currentSlide * 100}%)`;
-            document.querySelectorAll('.carousel-dot').forEach((dot, i) => {
-                dot.classList.toggle('active', i === currentSlide);
+            // AI Packs grid
+            const aiPacksGrid = document.getElementById('aiPacksGrid');
+            aiPacksGrid.innerHTML = '';
+            aiPacks.forEach((pack, i) => {
+                const card = document.createElement('div');
+                card.className = 'ai-pack-card';
+                const packName = currentLang === 'ua' ? pack.nameUA : pack.name;
+                card.innerHTML = `
+                    <div class="ai-pack-cover">
+                        <img src="${pack.cover}" alt="${packName}" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\\'cover-placeholder\\'>🖼</div>';">
+                    </div>
+                    <div class="ai-pack-info">
+                        <h3>${packName}</h3>
+                        <p class="pack-count">${pack.files.length} ${t.packPhotos}</p>
+                    </div>`;
+                card.addEventListener('click', () => openFsCarousel(i));
+                aiPacksGrid.appendChild(card);
             });
         }
-
-        function goToSlide(index) {
-            currentSlide = index;
-            if (currentSlide < 0) currentSlide = totalSlides - 1;
-            if (currentSlide >= totalSlides) currentSlide = 0;
-            updateCarousel();
-            resetAutoPlay();
-        }
-
-        function nextSlide() { goToSlide(currentSlide + 1); }
-        function prevSlide() { goToSlide(currentSlide - 1); }
-
-        function resetAutoPlay() {
-            clearInterval(carouselInterval);
-            carouselInterval = setInterval(nextSlide, 5000);
-        }
-
-        document.getElementById('carouselNext').addEventListener('click', nextSlide);
-        document.getElementById('carouselPrev').addEventListener('click', prevSlide);
-
-        const carouselContainer = document.getElementById('aiCarousel');
-        let touchStartX = 0, touchEndX = 0;
-        carouselContainer.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; });
-        carouselContainer.addEventListener('touchend', e => {
-            touchEndX = e.changedTouches[0].screenX;
-            if (touchStartX - touchEndX > 50) nextSlide();
-            if (touchEndX - touchStartX > 50) prevSlide();
-        });
 
         renderAllDynamicContent();
-        renderAICarousel();
-        resetAutoPlay();
 
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
