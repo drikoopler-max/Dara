@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Drikoopler — Code, Pixels & Stickers</title>
+    
+    <link rel="icon" type="image/png" href="IMG_2858.png">
+    <link rel="apple-touch-icon" href="IMG_2858.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -152,9 +155,12 @@
         /* ---------- AI CAROUSEL ---------- */
         .carousel-container { position: relative; max-width: 100%; overflow: hidden; }
         .carousel-track { display: flex; transition: transform 0.5s ease-in-out; }
-        .carousel-slide { min-width: 100%; display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 0.75rem; padding: 0.5rem 0; }
-        .ai-item { aspect-ratio: 1; background: #e7e5e4; border-radius: var(--radius); display: flex; align-items: center; justify-content: center; color: var(--text-secondary); font-weight: 500; font-size: 0.8rem; transition: all var(--transition); cursor: pointer; text-align: center; padding: 0.5rem; }
-        .ai-item:hover { opacity: 0.8; box-shadow: var(--shadow); }
+        .carousel-slide { min-width: 100%; display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 0.75rem; padding: 0.5rem 0; }
+        .ai-item { aspect-ratio: 1; background: #e7e5e4; border-radius: var(--radius); overflow: hidden; cursor: pointer; transition: all var(--transition); }
+        .ai-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+        .ai-item:hover img { transform: scale(1.08); }
+        .ai-item:hover { box-shadow: var(--shadow-lg); }
+        .ai-item .ai-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: var(--text-secondary); font-weight: 500; font-size: 0.75rem; text-align: center; padding: 0.5rem; }
         .carousel-btn {
             position: absolute; top: 50%; transform: translateY(-50%);
             width: 40px; height: 40px; background: var(--surface); border: 1px solid var(--border);
@@ -195,11 +201,15 @@
         .form-group textarea { resize: vertical; min-height: 100px; }
 
         /* ---------- SOCIAL BAR ---------- */
-        .social-bar { display: flex; gap: 1.25rem; justify-content: center; flex-wrap: wrap; padding: 2rem 0; }
-        .social-link { display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--text-secondary); font-weight: 500; font-size: 0.9rem; transition: color var(--transition); }
-        .social-link:hover { color: var(--accent); }
-        .social-icon { width: 36px; height: 36px; border-radius: 50%; background: var(--border); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; transition: background var(--transition); }
-        .social-link:hover .social-icon { background: var(--accent); }
+        .social-bar { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; padding: 2rem 0 0; }
+        .social-link { display: flex; flex-direction: column; align-items: center; gap: 8px; text-decoration: none; color: var(--text-secondary); font-weight: 500; font-size: 0.85rem; transition: all var(--transition); }
+        .social-link:hover { color: var(--accent); transform: translateY(-3px); }
+        .social-icon { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; transition: all var(--transition); }
+        .social-icon.tg { background: #0088cc; color: #fff; }
+        .social-icon.ig { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: #fff; }
+        .social-icon.pt { background: #e60023; color: #fff; }
+        .social-icon.tt { background: #000; color: #fff; }
+        .social-icon.dc { background: #5865F2; color: #fff; }
 
         /* ---------- FOOTER ---------- */
         footer { background: var(--accent); color: #fff; padding: 2rem 0; text-align: center; }
@@ -229,6 +239,18 @@
             .pricing-grid { grid-template-columns: 1fr; }
             .contact-wrapper { padding: 1.5rem; }
             .carousel-slide { grid-template-columns: repeat(2, 1fr); }
+            
+            .portfolio-img { height: 250px; }
+            .portfolio-img img { object-fit: contain; object-position: center; background: #f5f5f4; }
+            
+            .stickers-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+            .sticker-card { padding: 1rem; }
+            .sticker-preview img { height: 120px; }
+            .sticker-card h3 { font-size: 0.85rem; }
+            .sticker-link { font-size: 0.75rem; padding: 6px 12px; }
+            
+            .invitations-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+            .invitation-info h4 { font-size: 0.8rem; }
         }
     </style>
 </head>
@@ -415,19 +437,6 @@
         </div>
     </section>
 
-    <!-- ===== SOCIAL BAR ===== -->
-    <section>
-        <div class="container">
-            <div class="social-bar">
-                <a href="https://t.me/drikoopler" target="_blank" rel="noopener" class="social-link"><span class="social-icon">✈</span> Telegram</a>
-                <a href="https://instagram.com/drikoopler" target="_blank" rel="noopener" class="social-link"><span class="social-icon">📷</span> Instagram</a>
-                <a href="https://pinterest.com/drikoopler" target="_blank" rel="noopener" class="social-link"><span class="social-icon">📌</span> Pinterest</a>
-                <a href="https://tiktok.com/@drikoopler" target="_blank" rel="noopener" class="social-link"><span class="social-icon">🎵</span> TikTok</a>
-                <a href="https://discord.gg/drikoopler" target="_blank" rel="noopener" class="social-link"><span class="social-icon">💬</span> Discord</a>
-            </div>
-        </div>
-    </section>
-
     <!-- ===== CONTACT ===== -->
     <section id="contact">
         <div class="container">
@@ -464,6 +473,14 @@
                     </div>
                     <button type="submit" class="btn btn-primary" style="width:100%;" data-lang-key="formSubmit">Send via Telegram</button>
                 </form>
+            </div>
+            
+            <div class="social-bar">
+                <a href="https://t.me/drikoopler" target="_blank" rel="noopener" class="social-link"><span class="social-icon tg">✈</span> Telegram</a>
+                <a href="https://instagram.com/drikoopler" target="_blank" rel="noopener" class="social-link"><span class="social-icon ig">📷</span> Instagram</a>
+                <a href="https://pinterest.com/drikoopler" target="_blank" rel="noopener" class="social-link"><span class="social-icon pt">📌</span> Pinterest</a>
+                <a href="https://tiktok.com/@drikoopler" target="_blank" rel="noopener" class="social-link"><span class="social-icon tt">🎵</span> TikTok</a>
+                <a href="https://discord.gg/drikoopler" target="_blank" rel="noopener" class="social-link"><span class="social-icon dc">💬</span> Discord</a>
             </div>
         </div>
     </section>
@@ -539,42 +556,51 @@
             ]
         };
 
-        // AI items split into 4 slides of 7, 7, 7, 6 items
+        // AI slides with real filenames
         const aiSlides = [
+            // Slide 1 — Alucard (6 photos)
             [
-                { name: 'Sakura Wallpaper', nameUA: 'Сакура' },
-                { name: 'Neon City', nameUA: 'Неонове місто' },
-                { name: 'Quiet Forest', nameUA: 'Тихий ліс' },
-                { name: 'Cyberpunk Alley', nameUA: 'Кіберпанк-провулок' },
-                { name: 'Dragon Illustration', nameUA: 'Ілюстрація дракона' },
-                { name: 'Mecha Robot', nameUA: 'Меха-робот' },
-                { name: 'Castle in Sky', nameUA: 'Замок у небі' }
+                'Default_Alucard_is_the_main_character_of_the_anime_and_manga_H_2 2.jpg',
+                'Default_Alucard_is_the_main_character_of_the_anime_and_manga_H_3.jpg',
+                'Default_Alucard_is_the_main_character_of_the_anime_and_manga_H_1.jpg',
+                'Default_Alucard_is_the_main_character_of_the_anime_and_manga_H_0.jpg',
+                'Default_Alucard_from_Hellsing_Detailed_Description_for_Image_2.jpg',
+                'Default_Alucard_is_the_main_character_of_the_anime_and_manga_H_2.jpg'
             ],
+            // Slide 2 — Lylia avatars (4 photos)
             [
-                { name: 'Fox Spirit', nameUA: 'Дух лисиці' },
-                { name: 'Samurai Avatar', nameUA: 'Аватар самурая' },
-                { name: 'Magical Girl', nameUA: 'Дівчина-чарівниця' },
-                { name: 'Ocean Sunset', nameUA: 'Океанський захід' },
-                { name: 'Starry Night', nameUA: 'Зоряна ніч' },
-                { name: 'Urban Jungle', nameUA: 'Міські джунглі' },
-                { name: 'Dreamscape', nameUA: 'Пейзаж мрій' }
+                'Anime_Lylia_a_popular_hero_from_Mobile_Legends_Bang_Bang_is_de_0 2.jpg',
+                'Anime_Lylia_a_popular_hero_from_Mobile_Legends_Bang_Bang_is_de_1.jpg',
+                'Anime_Lylia_a_popular_hero_from_Mobile_Legends_Bang_Bang_is_de_0.jpg',
+                'Default_Lylia_a_popular_hero_from_Mobile_Legends_Bang_Bang_is_0 2.jpg'
             ],
+            // Slide 3 — Terraria characters (7 photos)
             [
-                { name: 'Golden Hour', nameUA: 'Золота година' },
-                { name: 'Frost Queen', nameUA: 'Снігова королева' },
-                { name: 'Neon Samurai', nameUA: 'Неоновий самурай' },
-                { name: 'Crystal Cave', nameUA: 'Кришталева печера' },
-                { name: 'Thunder Storm', nameUA: 'Грозовий шторм' },
-                { name: 'Cherry Lane', nameUA: 'Вишнева алея' },
-                { name: 'Moon Temple', nameUA: 'Місячний храм' }
+                'Leonardo_Phoenix_10_The_logo_features_a_female_Terraria_charac_2 2.jpg',
+                'Leonardo_Phoenix_10_The_logo_features_a_female_Terraria_charac_2.jpg',
+                'Leonardo_Phoenix_10_The_logo_features_a_female_Terraria_charac_0.jpg',
+                'Leonardo_Phoenix_10_The_logo_features_a_female_Terraria_charac_3 2.jpg',
+                'Leonardo_Phoenix_10_The_logo_features_a_female_Terraria_charac_1.jpg',
+                'Leonardo_Phoenix_10_The_logo_features_a_female_Terraria_charac_3.jpg',
+                'Leonardo_Phoenix_10_The_logo_features_a_female_Terraria_charac_1 2.jpg'
             ],
+            // Slide 4 — Fantasy renders (15 photos)
             [
-                { name: 'Sky Dancer', nameUA: 'Небесний танцівник' },
-                { name: 'Ember Wolf', nameUA: 'Вовк жару' },
-                { name: 'Lotus Pond', nameUA: 'Ставок лотосів' },
-                { name: 'Steel Heart', nameUA: 'Сталеве серце' },
-                { name: 'Wind Rider', nameUA: 'Вершник вітру' },
-                { name: 'Shadow Realm', nameUA: 'Царство тіней' }
+                'Leonardo_Phoenix_a_lush_3d_render_of_a_single_majestic_dragon_2.jpg',
+                'Leonardo_Phoenix_a_lush_3d_render_of_The_images_depict_a_wyver_1.jpg',
+                'Leonardo_Phoenix_a_lush_3d_render_of_A_single_regal_and_fantas_3.jpg',
+                'Leonardo_Phoenix_a_lush_3d_render_of_a_majestic_pegasus_crowne_0.jpg',
+                'Leonardo_Phoenix_a_lush_3d_render_of_A_regal_fantasythemed_tig_1.jpg',
+                'Leonardo_Phoenix_a_lush_3d_render_of_The_image_depicts_a_dark_3.jpg',
+                'Leonardo_Phoenix_a_lush_3d_render_of_A_majestic_crowned_phoeni_2.jpg',
+                'Leonardo_Phoenix_a_lush_3d_render_of_a_single_majestic_honey_b_1.jpg',
+                'Leonardo_Phoenix_a_lush_3d_render_of_The_image_depicts_a_dark_1.jpg',
+                'Leonardo_Phoenix_a_lush_3d_render_of_The_image_depicts_a_regal_1.jpg',
+                'Leonardo_Phoenix_a_lush_3d_render_of_a_single_majestic_dog_cro_2.jpg',
+                'Leonardo_Phoenix_a_lush_3d_render_of_A_majestic_crowned_phoeni_3.jpg',
+                'Leonardo_Phoenix_a_lush_3d_render_of_a_regal_and_fantasythemed_2.jpg',
+                'Leonardo_Phoenix_a_lush_3d_render_of_a_single_dark_regal_and_f_0.jpg',
+                'Leonardo_Phoenix_exquisite_macro_photography_closeup_of_a_sing_1.jpg'
             ]
         ];
 
@@ -802,11 +828,11 @@
             aiSlides.forEach((slide, slideIndex) => {
                 const slideDiv = document.createElement('div');
                 slideDiv.className = 'carousel-slide';
-                slide.forEach(item => {
+                slide.forEach(filename => {
                     const div = document.createElement('div');
                     div.className = 'ai-item';
-                    div.textContent = currentLang === 'ua' ? item.nameUA : item.name;
-                    div.addEventListener('click', () => alert(`${currentLang === 'en' ? 'AI-generated:' : 'AI-генерація:'} ${currentLang === 'ua' ? item.nameUA : item.name}`));
+                    div.innerHTML = `<img src="${filename}" alt="AI art" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\\'ai-placeholder\\'>🖼</div>';" loading="lazy">`;
+                    div.addEventListener('click', () => openModal(filename));
                     slideDiv.appendChild(div);
                 });
                 track.appendChild(slideDiv);
@@ -823,7 +849,6 @@
         function updateCarousel() {
             const track = document.getElementById('carouselTrack');
             track.style.transform = `translateX(-${currentSlide * 100}%)`;
-
             document.querySelectorAll('.carousel-dot').forEach((dot, i) => {
                 dot.classList.toggle('active', i === currentSlide);
             });
@@ -848,11 +873,8 @@
         document.getElementById('carouselNext').addEventListener('click', nextSlide);
         document.getElementById('carouselPrev').addEventListener('click', prevSlide);
 
-        // Touch swipe support
         const carouselContainer = document.getElementById('aiCarousel');
-        let touchStartX = 0;
-        let touchEndX = 0;
-
+        let touchStartX = 0, touchEndX = 0;
         carouselContainer.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; });
         carouselContainer.addEventListener('touchend', e => {
             touchEndX = e.changedTouches[0].screenX;
@@ -864,7 +886,6 @@
         renderAICarousel();
         resetAutoPlay();
 
-        // Contact form
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const t = translations[currentLang];
