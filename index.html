@@ -23,6 +23,7 @@
             --border: #e7e5e4;
             --gold: #b45309;
             --green: #15803d;
+            --etsy: #f1641e;
             --radius: 12px;
             --shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.06);
             --shadow-lg: 0 4px 24px rgba(0,0,0,0.10);
@@ -197,16 +198,14 @@
         .pricing-card li { padding: 3px 0; }
         .pricing-card li::before { content: "✓ "; color: var(--gold); font-weight: 700; }
 
-        /* ---------- CONTACT ---------- */
-        .contact-wrapper { max-width: 560px; margin: 0 auto; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 2.5rem; box-shadow: var(--shadow); }
-        .form-group { margin-bottom: 1rem; }
-        .form-group label { display: block; font-weight: 600; margin-bottom: 0.3rem; font-size: 0.85rem; }
-        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 0.95rem; transition: border var(--transition); background: var(--bg); color: var(--text); }
-        .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(10,10,10,0.05); }
-        .form-group textarea { resize: vertical; min-height: 100px; }
+        /* ---------- ORDER SECTION ---------- */
+        .order-section { text-align: center; padding: 4rem 0; }
+        .order-section h2 { margin-bottom: 0.75rem; }
+        .order-section .order-subtitle { color: var(--text-secondary); font-size: 1.05rem; margin-bottom: 2rem; }
+        .order-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem; }
 
         /* ---------- SOCIAL BAR ---------- */
-        .social-bar { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; padding: 2rem 0 0; }
+        .social-bar { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; padding: 0; }
         .social-link { display: flex; flex-direction: column; align-items: center; gap: 8px; text-decoration: none; color: var(--text-secondary); font-weight: 500; font-size: 0.85rem; transition: all var(--transition); }
         .social-link:hover { color: var(--accent); transform: translateY(-3px); }
         .social-icon { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; transition: all var(--transition); }
@@ -215,6 +214,7 @@
         .social-icon.pt { background: #e60023; color: #fff; }
         .social-icon.tt { background: #000; color: #fff; }
         .social-icon.dc { background: #5865F2; color: #fff; }
+        .social-icon.etsy { background: var(--etsy); color: #fff; }
 
         /* ---------- FOOTER ---------- */
         footer { background: var(--accent); color: #fff; padding: 2rem 0; text-align: center; }
@@ -242,7 +242,6 @@
         @media (max-width: 600px) {
             nav { flex-wrap: wrap; gap: 0.5rem; justify-content: center; font-size: 0.8rem; }
             .pricing-grid { grid-template-columns: 1fr; }
-            .contact-wrapper { padding: 1.5rem; }
             
             .portfolio-img { height: 250px; }
             .portfolio-img img { object-fit: contain; object-position: center; background: #f5f5f4; }
@@ -279,7 +278,7 @@
                 <a href="#stickers" data-lang-key="navStickers">Stickers</a>
                 <a href="#invitations" data-lang-key="navInvitations">Invitations</a>
                 <a href="#aiart" data-lang-key="navAI">AI Art</a>
-                <a href="#contact" class="btn btn-primary" data-lang-key="navContact">Order</a>
+                <a href="#order" class="btn btn-primary" data-lang-key="navContact">Order</a>
                 <div class="lang-switcher">
                     <button class="lang-btn active" data-lang="en">EN</button>
                     <button class="lang-btn" data-lang="ua">UA</button>
@@ -334,7 +333,7 @@
             <div class="custom-section" style="margin-top: 2rem;">
                 <h3 data-lang-key="customStickersTitle">Want custom stickers?</h3>
                 <p data-lang-key="customStickersDesc">I create unique illustrated sticker packs tailored to your brand, community, or vibe.</p>
-                <a href="#contact" class="btn btn-gold" data-lang-key="customStickersBtn">Order custom pack</a>
+                <a href="#order" class="btn btn-gold" data-lang-key="customStickersBtn">Order custom pack</a>
             </div>
         </div>
     </section>
@@ -345,13 +344,13 @@
             <div class="section-header">
                 <span class="section-label" data-lang-key="invitationsLabel">Portfolio</span>
                 <h2 data-lang-key="invitationsTitle">Invitations</h2>
-                <p class="section-subtitle" data-lang-key="invitationsSubtitle">Not for sale — examples of my custom design work.</p>
+                <p class="section-subtitle" data-lang-key="invitationsSubtitle">Examples of my custom design work.</p>
             </div>
             <div class="invitations-grid" id="invitationsGrid"></div>
             <div class="custom-section" style="margin-top: 2rem;">
                 <h3 data-lang-key="customInvitationsTitle">Need your own design?</h3>
                 <p data-lang-key="customInvitationsDesc">Every invitation is made from scratch. Weddings, birthdays, baby showers — you name it.</p>
-                <a href="#contact" class="btn btn-gold" data-lang-key="customInvitationsBtn">Order custom invitation</a>
+                <a href="#order" class="btn btn-gold" data-lang-key="customInvitationsBtn">Order custom invitation</a>
             </div>
         </div>
     </section>
@@ -387,7 +386,7 @@
                         <li data-lang-key="pricing1Item4">You set up domain & hosting</li>
                         <li data-lang-key="pricing1Item5">1 revision included</li>
                     </ul>
-                    <a href="#contact" class="btn btn-outline" data-lang-key="orderNow">Order now</a>
+                    <a href="#order" class="btn btn-outline" data-lang-key="orderNow">Order now</a>
                 </div>
                 <div class="pricing-card featured">
                     <span class="pricing-badge" data-lang-key="pricingBadge">Most popular</span>
@@ -400,7 +399,7 @@
                         <li data-lang-key="pricing2Item4">SSL certificate configured</li>
                         <li data-lang-key="pricing2Item5">2 revisions included</li>
                     </ul>
-                    <a href="#contact" class="btn btn-primary" data-lang-key="orderNow">Order now</a>
+                    <a href="#order" class="btn btn-primary" data-lang-key="orderNow">Order now</a>
                 </div>
                 <div class="pricing-card">
                     <h3 data-lang-key="pricing3Title">Custom Sticker Pack</h3>
@@ -412,7 +411,7 @@
                         <li data-lang-key="pricing3Item4">1 revision included</li>
                         <li data-lang-key="pricing3Item5">Commercial use OK</li>
                     </ul>
-                    <a href="#contact" class="btn btn-outline" data-lang-key="orderNow">Order now</a>
+                    <a href="#order" class="btn btn-outline" data-lang-key="orderNow">Order now</a>
                 </div>
                 <div class="pricing-card">
                     <h3 data-lang-key="pricing4Title">Custom Invitation</h3>
@@ -424,7 +423,7 @@
                         <li data-lang-key="pricing4Item4">1 revision included</li>
                         <li data-lang-key="pricing4Item5">Personal & commercial use</li>
                     </ul>
-                    <a href="#contact" class="btn btn-outline" data-lang-key="orderNow">Order now</a>
+                    <a href="#order" class="btn btn-outline" data-lang-key="orderNow">Order now</a>
                 </div>
                 <div class="pricing-card">
                     <h3 data-lang-key="pricing5Title">AI Photo Pack</h3>
@@ -436,49 +435,18 @@
                         <li data-lang-key="pricing5Item4">Commercial use OK</li>
                         <li data-lang-key="pricing5Item5">Fast delivery</li>
                     </ul>
-                    <a href="#contact" class="btn btn-outline" data-lang-key="orderNow">Order now</a>
+                    <a href="#order" class="btn btn-outline" data-lang-key="orderNow">Order now</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== CONTACT ===== -->
-    <section id="contact">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label" data-lang-key="contactLabel">Contact</span>
-                <h2 data-lang-key="contactTitle">Let's work together</h2>
-                <p class="section-subtitle" data-lang-key="contactSubtitle">Fill out the form and I'll reach out via Telegram.</p>
-            </div>
-            <div class="contact-wrapper">
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="name" data-lang-key="formName">Your Name</label>
-                        <input type="text" id="name" name="name" data-lang-key-placeholder="formNamePlaceholder" placeholder="John Doe" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="telegram" data-lang-key="formTelegram">Telegram @username</label>
-                        <input type="text" id="telegram" name="telegram" data-lang-key-placeholder="formTelegramPlaceholder" placeholder="@yourusername" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="service" data-lang-key="formService">Service Interested In</label>
-                        <select id="service" name="service">
-                            <option value="" data-lang-key="formServiceDefault">— Select —</option>
-                            <option value="Website File Only" data-lang-key="formServiceOpt1">Website — File Only</option>
-                            <option value="Website Turnkey" data-lang-key="formServiceOpt2">Website — Turnkey</option>
-                            <option value="Custom Sticker Pack" data-lang-key="formServiceOpt3">Custom Sticker Pack</option>
-                            <option value="Custom Invitation" data-lang-key="formServiceOpt4">Custom Invitation</option>
-                            <option value="AI Photo Pack" data-lang-key="formServiceOpt5">AI Photo Pack</option>
-                            <option value="Other" data-lang-key="formServiceOpt6">Other</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="message" data-lang-key="formMessage">Project Details</label>
-                        <textarea id="message" name="message" data-lang-key-placeholder="formMessagePlaceholder" placeholder="Tell me about your project..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary" style="width:100%;" data-lang-key="formSubmit">Send via Telegram</button>
-                </form>
-            </div>
+    <!-- ===== ORDER / SOCIALS ===== -->
+    <section id="order">
+        <div class="container order-section">
+            <span class="section-label" data-lang-key="orderLabel">Get in touch</span>
+            <h2 data-lang-key="orderTitle">Order via social media</h2>
+            <p class="order-subtitle" data-lang-key="orderSubtitle">Choose your preferred platform and send me a message. I'll get back to you within a few hours.</p>
             
             <div class="social-bar">
                 <a href="https://t.me/drikoopler" target="_blank" rel="noopener" class="social-link"><span class="social-icon tg">✈</span> Telegram</a>
@@ -486,6 +454,7 @@
                 <a href="https://pinterest.com/drikoopler" target="_blank" rel="noopener" class="social-link"><span class="social-icon pt">📌</span> Pinterest</a>
                 <a href="https://tiktok.com/@drikoopler" target="_blank" rel="noopener" class="social-link"><span class="social-icon tt">🎵</span> TikTok</a>
                 <a href="https://discord.gg/drikoopler" target="_blank" rel="noopener" class="social-link"><span class="social-icon dc">💬</span> Discord</a>
+                <a href="https://drikoopler.etsy.com" target="_blank" rel="noopener" class="social-link"><span class="social-icon etsy">🛍</span> Etsy</a>
             </div>
         </div>
     </section>
@@ -498,7 +467,7 @@
                 <a href="#stickers" data-lang-key="navStickers">Stickers</a>
                 <a href="#invitations" data-lang-key="navInvitations">Invitations</a>
                 <a href="#aiart" data-lang-key="navAI">AI Art</a>
-                <a href="#contact" data-lang-key="navContact">Contact</a>
+                <a href="#order" data-lang-key="navContact">Order</a>
             </div>
             <p class="copyright">© <span id="currentYear"></span> Drikoopler. <span data-lang-key="rights">All rights reserved.</span></p>
         </div>
@@ -572,7 +541,6 @@
             ]
         };
 
-        // AI packs data
         const aiPacks = [
             {
                 name: 'Alucard',
@@ -588,8 +556,8 @@
                 ]
             },
             {
-                name: 'Lylia Avatars',
-                nameUA: 'Аватари Lylia',
+                name: 'Lylia',
+                nameUA: 'Лілія',
                 cover: 'Anime_Lylia_a_popular_hero_from_Mobile_Legends_Bang_Bang_is_de_0 2.jpg',
                 files: [
                     'Anime_Lylia_a_popular_hero_from_Mobile_Legends_Bang_Bang_is_de_0 2.jpg',
@@ -646,7 +614,7 @@
                 websitesLabel: 'Portfolio', websitesTitle: 'Websites', websitesSubtitle: 'Examples of business card websites I can create for you.',
                 stickersLabel: 'Portfolio', stickersTitle: 'Sticker Packs', stickersSubtitle: '4 ready-made packs — free to download and use.',
                 customStickersTitle: 'Want custom stickers?', customStickersDesc: 'I create unique illustrated sticker packs tailored to your brand, community, or vibe.', customStickersBtn: 'Order custom pack',
-                invitationsLabel: 'Portfolio', invitationsTitle: 'Invitations', invitationsSubtitle: 'Not for sale — examples of my custom design work.',
+                invitationsLabel: 'Portfolio', invitationsTitle: 'Invitations', invitationsSubtitle: 'Examples of my custom design work.',
                 customInvitationsTitle: 'Need your own design?', customInvitationsDesc: 'Every invitation is made from scratch. Weddings, birthdays, baby showers — you name it.', customInvitationsBtn: 'Order custom invitation',
                 aiLabel: 'Portfolio', aiTitle: 'Drikoopler', aiSubtitle: 'AI-generated visuals — wallpapers, avatars, and illustrations. Click a pack to view.',
                 pricingLabel: 'Pricing', pricingTitle: 'Clear rates, no surprises', pricingSubtitle: 'Payment via Etsy or direct invoice.',
@@ -657,14 +625,8 @@
                 pricing4Title: 'Custom Invitation', pricing4Item1: 'Unique design from scratch', pricing4Item2: 'Digital or print-ready', pricing4Item3: 'Delivered as high-res file', pricing4Item4: '1 revision included', pricing4Item5: 'Personal & commercial use',
                 pricing5Title: 'AI Photo Pack', pricing5Item1: '10 AI-generated images', pricing5Item2: 'Custom theme', pricing5Item3: 'High-resolution files', pricing5Item4: 'Commercial use OK', pricing5Item5: 'Fast delivery',
                 orderNow: 'Order now',
-                contactLabel: 'Contact', contactTitle: "Let's work together", contactSubtitle: "Fill out the form and I'll reach out via Telegram.",
-                formName: 'Your Name', formNamePlaceholder: 'John Doe',
-                formTelegram: 'Telegram @username', formTelegramPlaceholder: '@yourusername',
-                formService: 'Service Interested In', formServiceDefault: '— Select —',
-                formServiceOpt1: 'Website — File Only', formServiceOpt2: 'Website — Turnkey', formServiceOpt3: 'Custom Sticker Pack', formServiceOpt4: 'Custom Invitation', formServiceOpt5: 'AI Photo Pack', formServiceOpt6: 'Other',
-                formMessage: 'Project Details', formMessagePlaceholder: 'Tell me about your project...', formSubmit: 'Send via Telegram',
+                orderLabel: 'Get in touch', orderTitle: 'Order via social media', orderSubtitle: "Choose your preferred platform and send me a message. I'll get back to you within a few hours.",
                 rights: 'All rights reserved.',
-                toastSuccess: '✅ Request sent! I will contact you on Telegram soon.', toastError: '❌ Please fill all required fields.',
                 portfolioTags: 'HTML · CSS · JS', stickerCount: 'Full pack', livePreview: 'Live preview',
                 freeStickerPack: 'Free', packPhotos: 'photos',
                 prices: { siteFile: '$50', siteTurnkey: '$100', stickers: '$15', invitation: '$10', aiPack: '$5' },
@@ -686,7 +648,7 @@
                 websitesLabel: 'Портфоліо', websitesTitle: 'Сайти', websitesSubtitle: 'Приклади сайтів-візиток, які я можу створити для вас.',
                 stickersLabel: 'Портфоліо', stickersTitle: 'Стікерпаки', stickersSubtitle: '4 готових паки — безкоштовно для завантаження та використання.',
                 customStickersTitle: 'Хочете індивідуальні стікери?', customStickersDesc: 'Створюю унікальні ілюстровані стікерпаки під ваш бренд, спільноту або настрій.', customStickersBtn: 'Замовити індивідуальний пак',
-                invitationsLabel: 'Портфоліо', invitationsTitle: 'Запрошення', invitationsSubtitle: 'Не продаються — приклади моєї індивідуальної роботи.',
+                invitationsLabel: 'Портфоліо', invitationsTitle: 'Запрошення', invitationsSubtitle: 'Приклади моєї індивідуальної роботи.',
                 customInvitationsTitle: 'Потрібен власний дизайн?', customInvitationsDesc: 'Кожне запрошення створюється з нуля. Весілля, дні народження, baby shower — що завгодно.', customInvitationsBtn: 'Замовити індивідуальне запрошення',
                 aiLabel: 'Портфоліо', aiTitle: 'Drikoopler', aiSubtitle: 'AI-генеровані зображення — шпалери, аватари та ілюстрації. Натисніть на пак для перегляду.',
                 pricingLabel: 'Ціни', pricingTitle: 'Прозорі ціни, без сюрпризів', pricingSubtitle: 'Оплата через Etsy або прямий рахунок.',
@@ -697,14 +659,8 @@
                 pricing4Title: 'Індивідуальне запрошення', pricing4Item1: 'Унікальний дизайн з нуля', pricing4Item2: 'Цифровий або готовий до друку', pricing4Item3: 'Доставка у високій якості', pricing4Item4: '1 правка включена', pricing4Item5: 'Особисте та комерційне використання',
                 pricing5Title: 'Пак AI фото', pricing5Item1: '10 AI-генерованих зображень', pricing5Item2: 'Індивідуальна тема', pricing5Item3: 'Файли високої якості', pricing5Item4: 'Комерційне використання дозволено', pricing5Item5: 'Швидка доставка',
                 orderNow: 'Замовити',
-                contactLabel: 'Контакт', contactTitle: 'Попрацюймо разом', contactSubtitle: 'Заповніть форму, і я звʼяжуся з вами через Telegram.',
-                formName: "Ваше ім'я", formNamePlaceholder: 'Іван Петренко',
-                formTelegram: 'Telegram @username', formTelegramPlaceholder: '@вашюзернейм',
-                formService: 'Послуга, яка цікавить', formServiceDefault: '— Оберіть —',
-                formServiceOpt1: 'Сайт — Лише файл', formServiceOpt2: 'Сайт — Під ключ', formServiceOpt3: 'Індивідуальний стікерпак', formServiceOpt4: 'Індивідуальне запрошення', formServiceOpt5: 'Пак AI фото', formServiceOpt6: 'Інше',
-                formMessage: 'Деталі проєкту', formMessagePlaceholder: 'Розкажіть про ваш проєкт...', formSubmit: 'Надіслати через Telegram',
+                orderLabel: "Зв'язатися", orderTitle: 'Замовлення через соцмережі', orderSubtitle: 'Оберіть зручну платформу та напишіть мені. Я відповім протягом кількох годин.',
                 rights: 'Усі права захищено.',
-                toastSuccess: '✅ Заявку надіслано! Я звʼяжуся з вами в Telegram.', toastError: '❌ Будь ласка, заповніть усі обовʼязкові поля.',
                 portfolioTags: 'HTML · CSS · JS', stickerCount: 'Повний пак', livePreview: 'Живе превʼю',
                 freeStickerPack: 'Безкоштовно', packPhotos: 'фото',
                 prices: { siteFile: '2 000 ₴', siteTurnkey: '4 000 ₴', stickers: '750 ₴', invitation: '500 ₴', aiPack: '200 ₴' },
@@ -732,14 +688,6 @@
                 const key = el.dataset.langKeyPlaceholder;
                 if (t[key]) el.placeholder = t[key];
             });
-            const serviceSelect = document.getElementById('service');
-            if (serviceSelect) {
-                const opts = serviceSelect.options;
-                opts[0].textContent = t.formServiceDefault;
-                for (let i = 1; i <= 6; i++) {
-                    if (t['formServiceOpt' + i]) opts[i].textContent = t['formServiceOpt' + i];
-                }
-            }
             document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.lang === lang));
             localStorage.setItem('preferredLang', lang);
             updatePrices();
@@ -835,11 +783,7 @@
         fsClose.addEventListener('click', closeFsCarousel);
         fsNext.addEventListener('click', fsNextSlide);
         fsPrev.addEventListener('click', fsPrevSlide);
-
-        fsCarousel.addEventListener('click', function(e) {
-            if (e.target === fsCarousel) closeFsCarousel();
-        });
-
+        fsCarousel.addEventListener('click', function(e) { if (e.target === fsCarousel) closeFsCarousel(); });
         document.addEventListener('keydown', function(e) {
             if (!document.body.classList.contains('fs-open')) return;
             if (e.key === 'Escape') closeFsCarousel();
@@ -847,7 +791,6 @@
             if (e.key === 'ArrowLeft') fsPrevSlide();
         });
 
-        // Touch swipe for fullscreen carousel
         let fsTouchStartX = 0;
         fsCarousel.addEventListener('touchstart', e => { fsTouchStartX = e.changedTouches[0].screenX; });
         fsCarousel.addEventListener('touchend', e => {
@@ -880,9 +823,7 @@
                         <a href="${link}" target="_blank" rel="noopener">${t.livePreview} ↗</a>
                     </div>`;
                 websitesGrid.appendChild(card);
-                card.querySelector('.portfolio-img').addEventListener('click', function() {
-                    if (this.dataset.img) openModal(this.dataset.img);
-                });
+                card.querySelector('.portfolio-img').addEventListener('click', function() { if (this.dataset.img) openModal(this.dataset.img); });
             });
 
             // Stickers
@@ -900,9 +841,7 @@
                     <p class="sticker-count">${t.stickerCount}</p>
                     <a href="${pack.link}" target="_blank" rel="noopener" class="sticker-link">Add to Telegram</a>`;
                 stickersGrid.appendChild(card);
-                card.querySelector('.sticker-preview').addEventListener('click', function() {
-                    if (this.dataset.img) openModal(this.dataset.img);
-                });
+                card.querySelector('.sticker-preview').addEventListener('click', function() { if (this.dataset.img) openModal(this.dataset.img); });
             });
 
             // Invitations
@@ -918,9 +857,7 @@
                     </div>
                     <div class="invitation-info"><h4>${item.name}</h4></div>`;
                 invitationsGrid.appendChild(card);
-                card.querySelector('.invitation-img').addEventListener('click', function() {
-                    if (this.dataset.img) openModal(this.dataset.img);
-                });
+                card.querySelector('.invitation-img').addEventListener('click', function() { if (this.dataset.img) openModal(this.dataset.img); });
             });
 
             // AI Packs grid
@@ -944,19 +881,6 @@
         }
 
         renderAllDynamicContent();
-
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const t = translations[currentLang];
-            const name = document.getElementById('name').value.trim();
-            const telegram = document.getElementById('telegram').value.trim();
-            const message = document.getElementById('message').value.trim();
-            if (!name || !telegram || !message) { showToast(t.toastError); return; }
-            const service = document.getElementById('service').value;
-            console.log('📩 Data ready for Telegram bot:', { name, telegram, service: service || 'Not specified', message });
-            showToast(t.toastSuccess);
-            this.reset();
-        });
 
         function showToast(msg) {
             const toast = document.getElementById('toast');
